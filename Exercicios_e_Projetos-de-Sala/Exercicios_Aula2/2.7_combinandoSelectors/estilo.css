@@ -1,0 +1,32 @@
+* {
+    background-color: antiquewhite;
+}
+
+h2, h5 {
+    color: darkgoldenrod
+}
+
+.usada {
+    color: purple;
+    font-weight: bold;
+}
+
+.Roupas {
+    color: blue;
+}
+
+.moveis{
+    color: blue;
+}
+
+div li{
+    color: red;
+}
+
+.moveis .usada {
+    color: greenyellow;
+}
+
+.alimentos {
+    color: aqua;
+}

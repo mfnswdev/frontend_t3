@@ -1,0 +1,36 @@
+* {
+    font-family: 'Fira Code', sans-serif;
+    background-color: antiquewhite;
+}
+
+
+h1 {
+    text-decoration: underline;
+    font-style: italic;
+    
+}
+
+img {
+    width: 150px;
+    height: 150px;
+}
+
+#amarelo {
+    color: yellow;
+}
+
+#vermelho {
+    color: red;
+}
+
+#azul {
+    color: blue;
+}
+
+#marron {
+    color: burlywood;
+}
+
+#violeta {
+    color: violet;
+}

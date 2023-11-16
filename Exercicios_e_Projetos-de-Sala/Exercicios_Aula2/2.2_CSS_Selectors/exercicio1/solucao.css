@@ -1,0 +1,38 @@
+* {
+    font-family: 'Fira Code', sans-serif;
+    background-color: antiquewhite;
+}
+
+span {
+    font-size: 48px;
+    display: inline-block;
+    color: red;
+  
+}
+
+ol {
+    text-align: center;
+    align-items: center;
+    
+}
+
+li a{
+    color: red;
+    font-size: 18px;
+    font-style: italic;
+    
+
+}
+
+.nots {
+    color: aquamarine;
+    font-size: 36px;   
+    font-weight: 500px;
+    text-decoration: none;
+}
+
+#sulbahia {
+    color: brown;
+    font-weight: 500px;
+    font-size: 48px;
+}
