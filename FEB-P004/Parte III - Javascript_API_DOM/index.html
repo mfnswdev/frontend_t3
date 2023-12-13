@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Formulário Pacote Turístico</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="formulario-container">
+        <h2>Formulário Pacote Turístico</h2>
+        <form id="formulario">
+            <label for="destino">Destino:</label>
+            <input type="text" id="destino" required>
+
+            <label for="imagem">URL da Imagem:</label>
+            <input type="url" id="imagem" required>
+
+            <label for="diarias">Número de Diárias:</label>
+            <input type="number" id="diarias" required>
+
+            <label for="cafe-da-manha">Café da Manhã Incluso:</label>
+            <input type="checkbox" id="cafe-da-manha">
+
+            <label for="preco">Preço:</label>
+            <input type="text" id="preco" required>
+
+            <label for="obs">Observações:</label>
+            <textarea id="obs"></textarea>
+
+            <label for="parcelamento">Opções de Parcelamento:</label>
+            <input type="text" id="parcelamento">
+
+            <button type="button" onclick="inserirPacote()">Inserir Pacote</button>
+        </form>
+    </div>
+
+    <hr>
+
+    <div class="container-destinos">
+        <!-- Os pacotes turísticos serão inseridos aqui via JavaScript -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
