@@ -1,0 +1,7 @@
+.noticias {
+    padding-top: 5px;
+    background-color: antiquewhite;
+    grid-column: 2 / 3;
+    grid-row: 3 / 8;
+    border-radius: 10px;
+}

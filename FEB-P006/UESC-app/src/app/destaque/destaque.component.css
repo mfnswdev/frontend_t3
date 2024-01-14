@@ -1,0 +1,7 @@
+.destaque {
+    padding-top: 5px;
+    background-color: blueviolet;
+    grid-column: 3 / 6;
+    grid-row: 3 / 8;
+    border-radius: 10px;
+}
