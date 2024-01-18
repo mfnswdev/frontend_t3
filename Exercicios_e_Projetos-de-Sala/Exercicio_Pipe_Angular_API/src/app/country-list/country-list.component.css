@@ -1,0 +1,19 @@
+th {
+    text-align: center;
+    min-width: 50px;
+    max-width: 50px;
+}
+
+
+table {
+
+    width: 100%;
+
+}
+
+table,
+th,
+td,
+div {
+    border: 1px solid black;
+}

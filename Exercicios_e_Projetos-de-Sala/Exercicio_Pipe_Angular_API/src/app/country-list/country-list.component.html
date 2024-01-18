@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <th>Pais:</th>
+        <th>Capital:</th>
+    </tr>
+</table>
+<div *ngFor="let country of countryList">
+    <table>
+
+        <tr>
+            <th>{{country.name.common}}</th>
+
+            <th>{{country.capital}}</th>
+        </tr>
+    </table>
+</div>
