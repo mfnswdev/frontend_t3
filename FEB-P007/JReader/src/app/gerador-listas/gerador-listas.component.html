@@ -1,0 +1,5 @@
+<div class="categorias" appAlinharBotoes style="margin-top: 30px;">
+    <button class="botao-principal" *ngIf="veiculoSelecionado">{{ veiculoSelecionado.Name
+        }}</button>
+    <button class="botao-adicionar" (click)="onAdicionarAoCarrinho()">Adicionar</button>
+</div>

@@ -1,0 +1,20 @@
+/* app.component.css */
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+/* Adicione espaçamento uniforme entre os componentes */
+app-classes,
+app-objetos,
+app-propriedades {
+    margin: 0 10px;
+    /* Ajuste a margem conforme necessário */
+}
+
+
+.rodape-botoes {
+    margin-top: -450px;
+}

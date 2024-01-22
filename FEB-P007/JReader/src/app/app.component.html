@@ -1,0 +1,23 @@
+<div class="container" appAlinharBotoes>
+  <app-classes (selecionarCategoria)="onCategoriaSelecionada($event)"
+    (selecionarVeiculos)="onVeiculosSelecionados($event)"></app-classes>
+
+  <app-objetos [categoriaSelecionada]="categoriaSelecionada" [veiculos]="veiculos"
+    (selecionarVeiculo)="onVeiculoSelecionado($event)"
+    (nomesVeiculosSelecionados)="onNomesVeiculosSelecionados($event)"></app-objetos>
+
+  <app-propriedades [veiculos]="veiculos" [veiculoSelecionado]="veiculoSelecionado"
+    (selecionarTitulo)="onTituloSelecionado($event)"></app-propriedades>
+
+  <app-atributos *ngIf="tituloSelecionado" [veiculoSelecionado]="veiculoSelecionado"
+    [tituloSelecionado]="tituloSelecionado"></app-atributos>
+
+  <app-gerador-listas *ngIf="tituloSelecionado" [veiculoSelecionado]="veiculoSelecionado"
+    [tituloSelecionado]="tituloSelecionado"
+    (adicionarAoCarrinhoClicado)="onAdicionarAoCarrinhoClicado($event)"></app-gerador-listas>
+
+</div>
+
+<div class="rodape-botoes" *ngIf="exibirBotoesRodape">
+  <app-carrinho [nomesVeiculos]="nomesVeiculos"></app-carrinho>
+</div>

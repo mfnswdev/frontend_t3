@@ -1,0 +1,8 @@
+<input type="file" (change)="onFileSelected($event)" accept=".json" style="margin-bottom: 10px;">
+
+<div class="veiculos" appAlinharBotoes>
+    <button class="veiculos-header" [disabled]="!jsonData">Veículos</button>
+    <button class="veiculos-item" (click)="emitirCategoria('Avioes')" [disabled]="!jsonData">Aviões</button>
+    <button class="veiculos-item" (click)="emitirCategoria('Carros')" [disabled]="!jsonData">Carros</button>
+    <button class="veiculos-item" (click)="emitirCategoria('Barcos')" [disabled]="!jsonData">Barcos</button>
+</div>

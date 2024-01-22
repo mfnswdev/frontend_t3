@@ -1,0 +1,7 @@
+<div class="propriedades" appAlinharBotoes style="margin-top: 30px;">
+    <button class="propriedades-header" *ngIf="veiculoSelecionado">{{ veiculoSelecionado.Name }}</button>
+    <div class="button-wrapper">
+        <button class="propriedades-item" *ngFor="let nomeVeiculo of getNomesVeiculos()"
+            (click)="emitirTituloSelecionado(nomeVeiculo)">{{ nomeVeiculo }}</button>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+.propriedades-header {
+    background-color: #fe5d4a;
+    color: white;
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 5px;
+    border: none;
+    cursor: default;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+    width: 150px;
+    max-width: 150px;
+    min-width: 150px;
+}
+
+.propriedades-header:hover{
+    background-color: red;
+}
+
+.button-wrapper {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.propriedades-item {
+    background-color: #7b66ff;
+    color: white;
+    margin: 5px;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+    width: 150px;
+    max-width: 150px;
+    min-width: 150px;
+}
+
+.propriedades-item:hover {
+    opacity: 0.7;
+}
+
+.propriedades-item[disabled] {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+.propriedades {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

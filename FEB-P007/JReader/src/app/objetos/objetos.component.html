@@ -1,0 +1,7 @@
+<div class="categorias" appAlinharBotoes style="margin-top: 30px;">
+    <button class="categorias-header" *ngIf="categoriaSelecionada">{{ categoriaSelecionada }}</button>
+    <div class="button-wrapper">
+        <button class="categorias-item" *ngFor="let veiculo of veiculos" (click)="selecionarVeiculoClick(veiculo)">{{
+            veiculo.Name }}</button>
+    </div>
+</div>
