@@ -1,0 +1,148 @@
+body {
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    border-radius: 10px;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 1fr 1fr 20%;
+    grid-template-rows: repeat(14, 1fr);
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+li {
+    text-align: left;
+    padding-left: 5px;
+} 
+
+h4, h5 {
+    margin-left: 15px;
+    text-align: left;
+}
+
+h3 {
+    font-family: Fira Code, sans-serif;
+}
+
+h4 {
+    font-family: Fira Code, sans-serif;
+}
+
+h5 {
+    font-family: Press Start 2P, sans-serif;
+}
+
+a{
+    font-family: Press Start 2P, sans-serif;
+}
+
+.header {
+    padding-top: 5px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: yellowgreen;
+    grid-column: 1 / 6;
+    grid-row: 1 / 3;
+    margin-bottom: 10px;
+}
+   
+    
+.menu {
+    padding-top: 5px;
+    border-radius: 10px;
+    background-color: aquamarine;
+    grid-column: 1 / 2;
+    grid-row: 3 / 8;
+}
+
+.noticias {
+    padding-top: 5px;
+    background-color: antiquewhite;
+    grid-column: 2 / 3;
+    grid-row: 3 / 8;
+    border-radius: 10px;
+}
+
+.destaque {
+    padding-top: 5px;
+    background-color: blueviolet;
+    grid-column: 3 / 6;
+    grid-row: 3 / 8;
+    border-radius: 10px;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+    margin: auto; 
+}
+
+.container-img {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center; 
+    margin-top: 20px; 
+}
+
+.servicos {
+    background-color: blanchedalmond;
+    grid-column: 1 / 2; 
+    grid-row: 8 / 13;
+    border-radius: 10px;
+    padding-top: 5px;
+}
+
+.resultados {
+    border-radius: 10px;
+    background-color: yellowgreen;
+    grid-row: 8 / 13;
+    grid-column: 2 / 6;
+    padding-top: 5px;   
+}
+
+.rodape {
+    margin-top: 10px;
+    background-color: aquamarine;
+    grid-row: 13 / 14;
+    grid-column: 1 / 6;
+    border-radius: 10px;   
+    padding-top: 5px;
+}
+
+@media (max-width: 500px) {
+    body {
+        height: 150vh;
+        overflow-y: scroll;
+        font-size: 11px;
+    }
+    .header {
+        grid-column: 1 / 6;
+        grid-row: 1 / 2;
+    }
+    .menu {
+        grid-column: 1 / 6;
+        grid-row: 2 / 3;
+    }
+    .noticias {
+        grid-column: 1 / 6;
+        grid-row: 3 / 8;
+    }
+    .destaque {
+        grid-column: 1 / 6;
+        grid-row: 8 / 13;
+    }
+    .servicos {
+        grid-column: 1 / 6;
+        grid-row: 13 / 14;
+    }   
+
+    .resultados {
+        grid-column: 1 / 6;
+        grid-row: 14 / 15;
+    }
+    .rodape {
+        grid-column: 1 / 6;
+        grid-row: 15 / 16;
+    }
+}

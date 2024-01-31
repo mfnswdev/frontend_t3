@@ -1,0 +1,77 @@
+img {
+    width: 300px;
+    height: 150px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.roteiros-viagens {
+    background-color: violet;
+    border-radius: 10px;
+}
+
+.roteiro-comprar {
+    font-family: 'Press Start 2P', sans-serif;
+    background-color: greenyellow;
+    border: none;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.roteiro-comprar:hover {
+    background-color: green;
+    font-style: bold;
+}
+
+
+.container-destinos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    padding: 10px;
+    align-items: center;
+    gap: 10px;
+    height: 93vh;
+
+}
+
+.roteiro-incluso {
+    text-align: center;
+    align-items: center;
+}
+
+.roteiro-destino {
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.roteiro-preco {
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.roteiro-obs,
+.roteiro-parcelamento {
+    font-style: italic;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: antiquewhite;
+    color: purple;
+    align-items: center;
+    text-align: center;
+}
+
+li {
+    /*list-style-type: "\2713";*/
+    list-style-type: none;
+    font-size: large;
+    text-align: left;
+    margin-left: 45px;
+}
