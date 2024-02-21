@@ -22,18 +22,21 @@
         <input id="address" formControlName="address"> <span
             *ngIf="!FormTest.get('address')?.valid && FormTest.get('address')?.touched">Invalid Address</span>
 
-        <label for="date">Birth Date:</label>
-        <mat-form-field class="example-full-width">
-            <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker" id="date" formControlName="date">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker">
-                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-            </mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
 
+        <span>Birth Date: </span>
+        <div class="date-wrapper">
+            <label for="day">Day: </label>
+            <input id="day" formControlName="day"> <span
+                *ngIf="!FormTest.get('day')?.valid && FormTest.get('day')?.touched">Invalid Day</span>
 
+            <label for="month">Month: </label>
+            <input id="month" formControlName="month"> <span
+                *ngIf="!FormTest.get('month')?.valid && FormTest.get('month')?.touched">Invalid Month</span>
+
+            <label for="year">Year: </label>
+            <input id="year" formControlName="year"> <span
+                *ngIf="!FormTest.get('year')?.valid && FormTest.get('year')?.touched">Invalid Year</span>
+        </div>
 
         <label for="gender">Gender:</label>
         <select name="gender" id="gender" formControlName="gender">
