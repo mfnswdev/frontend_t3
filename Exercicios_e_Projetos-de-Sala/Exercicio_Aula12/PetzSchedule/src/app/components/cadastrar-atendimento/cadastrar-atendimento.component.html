@@ -1,0 +1,27 @@
+<form [formGroup]="FormTest" (ngSubmit)="onSubmit()"  class="">
+
+    <span>Agende sua consulta</span>
+    <label for="dataConsulta">Data: </label>
+    <input id="dataConsulta" type="date" formControlName="dataConsulta">
+
+    <label for="nomeTutor">Tutor: </label>
+    <input id="nomeTutor" type="text" formControlName="nomeTutor">
+
+    <label for="nomePet">Nome do pet: </label>
+    <input id="nomePet" type="text" formControlName="nomePet"> 
+
+    <label for="tipoPet">Tipo de pet: </label>
+    <input id="tipoPet" type="text" formControlName="tipoPet">
+
+    <label for="racaPet">Raca do pet: </label>
+    <input id="racaPet" type="text" formControlName="racaPet">
+
+    <label for="obs">Observacoes: </label>
+    <input id="obs" type="text" formControlName="obs">
+
+    <button type="submit">Agendar consulta</button>
+
+
+</form>
+
+
