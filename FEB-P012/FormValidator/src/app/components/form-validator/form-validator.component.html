@@ -1,0 +1,54 @@
+<div class="wrapper">
+    <h1>Sing Up Form!</h1>
+
+    <form [formGroup]="FormTest" (ngSubmit)="onSubmit()">
+        <label for="user">Username:</label>
+        <input id="user" formControlName="user"> <span
+            *ngIf="!FormTest.get('user')?.valid && FormTest.get('user')?.touched">Invalid Username</span>
+
+        <label for="password">Password:</label>
+        <input id="password" formControlName="password"> <span
+            *ngIf="!FormTest.get('password')?.valid && FormTest.get('password')?.touched">Invalid Password</span>
+
+        <label for=" email">E-mail:</label>
+        <input id="email" formControlName="email"> <span
+            *ngIf="!FormTest.get('email')?.valid && FormTest.get('email')?.touched">Invalid E-mail</span>
+
+        <label for="name">Full Name:</label>
+        <input id="name" formControlName="name"> <span
+            *ngIf="!FormTest.get('name')?.valid && FormTest.get('name')?.touched">Invalid Name</span>
+
+        <label for="address">Address:</label>
+        <input id="address" formControlName="address"> <span
+            *ngIf="!FormTest.get('address')?.valid && FormTest.get('address')?.touched">Invalid Address</span>
+
+
+        <span>Birth Date: </span>
+        <div class="date-wrapper">
+            <label for="day">Day: </label>
+            <input id="day" formControlName="day"> <span
+                *ngIf="!FormTest.get('day')?.valid && FormTest.get('day')?.touched">Invalid Day</span>
+
+            <label for="month">Month: </label>
+            <input id="month" formControlName="month"> <span
+                *ngIf="!FormTest.get('month')?.valid && FormTest.get('month')?.touched">Invalid Month</span>
+
+            <label for="year">Year: </label>
+            <input id="year" formControlName="year"> <span
+                *ngIf="!FormTest.get('year')?.valid && FormTest.get('year')?.touched">Invalid Year</span>
+        </div>
+
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender" formControlName="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="no-declaration">No-declaration</option>
+        </select>
+        <span *ngIf="!FormTest.get('gender')?.valid && FormTest.get('gender')?.touched">Invalid Gender</span>
+        <label for="occupation">Occupation:</label>
+        <input id="occupation" formControlName="occupation"> <span
+            *ngIf="!FormTest.get('occupation')?.valid && FormTest.get('occupation')?.touched">Invalid Occupation</span>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
