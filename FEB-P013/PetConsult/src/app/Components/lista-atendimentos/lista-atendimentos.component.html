@@ -2,20 +2,23 @@
 <table class="tickets-table" *ngIf="loadedAtendimentos.length >=1">
     <thead>
         <tr>
-            <th>Data: </th>
-            <th>Tipo do pet</th>
-            <th>Tutor(a): </th>
+            <th>Tutor(a) </th>
+            <th>Nome do pet </th>
+            <th>Data do Atendimento </th>
             <th></th>
-            <th><div class="container-button"><button style="background-color: rgb(154, 239, 183); color: black; border-radius: 5px;"
-                    (click)="apagarTudo()">Apagar
-                    Tudo</button></div></th>
+            <th>
+                <div class="container-button"><button
+                        style="background-color: rgb(154, 239, 183); color: black; border-radius: 5px;"
+                        (click)="apagarTudo()">Apagar
+                        Tudo</button></div>
+            </th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let atendimento of loadedAtendimentos">
-            <td>{{ atendimento.dateAtendimento }}</td>
-            <td>{{ atendimento.especie }}</td>
+            <td>{{ atendimento.tutorName }}</td>
             <td>{{ atendimento.petName }}</td>
+            <td>{{ atendimento.dateAtendimento }}</td>
 
             <td>
                 <div class="container-button"><button type="button" class="btnEditar"
