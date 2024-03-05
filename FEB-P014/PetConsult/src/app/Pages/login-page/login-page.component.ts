@@ -12,8 +12,8 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpHandler } from '@a
     standalone: true,
     templateUrl: './login-page.component.html',
     styleUrl: './login-page.component.scss',
-    imports: [LoadingSpinnerComponent, CommonModule, FormsModule, HttpClientModule, RouterModule, ],
-    providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, AuthService, HttpClient],
+    imports: [LoadingSpinnerComponent, CommonModule, FormsModule, HttpClientModule, RouterModule],
+    providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, AuthInterceptor, AuthService],
 })
 export class LoginPageComponent {
     modoLogin = true;
@@ -44,7 +44,7 @@ export class LoginPageComponent {
                     console.log(responseData);
                     this.estaCarregando = false;
                     this.temErro = false;
-                    this.router.navigate(['/pecas']);
+                    this.router.navigate(['/home']);
                 }
             );
         } else {
@@ -53,7 +53,7 @@ export class LoginPageComponent {
                     console.log(responseData);
                     this.estaCarregando = false;
                     this.temErro = false;
-                    this.router.navigate(['/pecas']);
+                    this.router.navigate(['/home']);
                 },
                 error => {
                     console.log(error);
