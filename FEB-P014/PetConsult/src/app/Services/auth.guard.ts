@@ -1,17 +1,33 @@
-import { CanActivateFn, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  Router,
+  UrlTree,
+} from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
-class authAux {
-  constructor(private authService: AuthService, private router: Router) { }
+@Injectable({ providedIn: 'root' })
+export class AuthGuard implements CanActivate {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {}
 
-}
-export const authGuard: CanActivateFn = (route, state) => {
-  
-  const authService = thconst isAuth = !!this.authService.usuario.value.token;
-  if (isAuth) {
-    return true;
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot,
+  ):
+    | boolean
+    | UrlTree
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree> {
+    const isAuth = !!this.authService.usuario.value.token;
+    if (isAuth) {
+      return true;
+    }
+    return this.router.createUrlTree(['/sem-autorizacao']);
   }
-  return this.router.createUrlTree(['/sem-autorizacao']);
-};
-
-
+}

@@ -5,7 +5,7 @@ import { EditarAtendimentosComponent } from './Pages/editar-atendimentos/editar-
 import { HomeComponent } from './Components/home/home.component';
 
 import { LoginPageComponent } from './Pages/login-page/login-page.component';
-import { AuthGuard } from './Services/auth-guard.guard';
+import { AuthGuard } from './Services/auth.guard';
 import { SemAutorizacaoComponent } from './Pages/sem-autorizacao/sem-autorizacao.component';
 
 export const routes: Routes = [
@@ -13,7 +13,7 @@ export const routes: Routes = [
     { path: 'listarAtendimento', component: ListaAtendimentosComponent, canActivate: [AuthGuard] },
     { path: 'editarAtendimento/:id', component: EditarAtendimentosComponent, canActivate: [AuthGuard] },
     { path: 'home', component: HomeComponent },
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'login', component: LoginPageComponent },
     {path: 'sem-autorizacao', component: SemAutorizacaoComponent},
 ];

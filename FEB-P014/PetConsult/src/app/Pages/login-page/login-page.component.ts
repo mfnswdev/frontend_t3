@@ -4,8 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../Services/auth.service';
-import { AuthInterceptor } from '../../Services/auth.interceptor';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 
 @Component({
     selector: 'app-login-page',
@@ -13,7 +12,7 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, HttpHandler } from '@a
     templateUrl: './login-page.component.html',
     styleUrl: './login-page.component.scss',
     imports: [LoadingSpinnerComponent, CommonModule, FormsModule, HttpClientModule, RouterModule],
-    providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, AuthInterceptor, AuthService],
+    
 })
 export class LoginPageComponent {
     modoLogin = true;
