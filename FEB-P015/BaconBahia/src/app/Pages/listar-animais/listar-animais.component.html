@@ -1,0 +1,47 @@
+<h2>Listagem de Animais</h2>
+<p *ngIf="loadedAnimais.length < 1">Não existem animais cadastradas!</p>
+<table class="tickets-table" *ngIf="loadedAnimais.length >=1">
+    <thead>
+        <tr>
+
+            <th>Brinco do Animal</th>
+            <th>Brinco do Pai</th>
+            <th>Brinco da Mãe</th>
+            <th>Data de Nascimento</th>
+            <th>Data de Saída</th>
+            <th>Sexo</th>
+            <th>Status</th>
+            
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let animal of loadedAnimais">
+
+            <td>{{ animal.porcoId }}</td>
+            <td>{{ animal.paiId }}</td>
+            <td>{{ animal.maeId }}</td>
+            <td>{{ animal.dataNasc }}</td>
+            <td>{{ animal.dataSaida }}</td>
+            <td>{{ animal.genero }}</td>
+            <td>{{ animal.status }}</td>
+
+            <td>
+                <div class="container-button">
+                    <button type="button" class="btnEditar"
+                        routerLink="/editarAnimal/{{animal.id}}">Editar</button></div>
+            </td>
+            <td>
+                <div class="container-button">
+                    <button type="button" class="btnEditar"
+                        routerLink="/deletarAnimal/{{animal.id}}">Deletar</button></div>
+            </td>
+            <td>
+                <div class="container-button">
+                    <button type="button" class="btnEditar"
+                        routerLink="/pesagemAnimal/{{animal.id}}">Registro de pesagens</button></div>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
