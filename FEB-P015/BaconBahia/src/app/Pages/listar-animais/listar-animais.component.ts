@@ -30,11 +30,11 @@ export class ListarAnimaisComponent {
 
   }
   deleteAnimalByID(id: any) {
-    const indexToRemove = this.loadedAnimais.findIndex((atendimento) => atendimento.id = id);
+    if (window.confirm('Você tem certeza que deseja deletar este animal?')) {
+      const indexToRemove = this.loadedAnimais.findIndex((atendimento) => atendimento.id = id);
       this.database.deleteAnimalByID(id).subscribe(() => {
-      this.loadedAnimais.splice(indexToRemove, 1);
-    });
+        this.loadedAnimais.splice(indexToRemove, 1);
+      });
+    }
   }
-
-
 }

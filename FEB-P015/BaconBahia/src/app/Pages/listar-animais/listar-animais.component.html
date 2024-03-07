@@ -1,10 +1,9 @@
 <h2>Listagem de Animais</h2>
-<!-- <ng-container *ngIf="loadedAnimais.length < 1; else loading">
-    
-</ng-container> -->
 
 <ng-container *ngIf="loadedAnimais.length < 1; else loaded">
-    <div class="loader"></div>
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
 </ng-container>
 
 <ng-template #loaded>
