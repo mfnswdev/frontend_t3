@@ -32,7 +32,7 @@
                 <td>{{ animal.status }}</td>
                 <td><button type="button" class="btnEditar" routerLink="/editarAnimal/{{animal.id}}">Editar</button>
                 </td>
-                <td><button type="button" class="btnDeletar" routerLink="/deletarAnimal/{{animal.id}}">Deletar</button>
+                <td><button type="button" class="btnDeletar" (click)="deleteAnimalByID(animal.id)">Deletar</button>
                 </td>
                 <td><button type="button" class="btnPesagem" routerLink="/pesagemAnimal/{{animal.id}}">Registro de
                         pesagens</button></td>
