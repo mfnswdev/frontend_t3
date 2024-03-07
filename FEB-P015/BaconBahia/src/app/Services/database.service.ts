@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Datapig } from '../Models/datapig';
 import { Observable, map } from 'rxjs';
 import { Datapeso } from '../Models/datapeso';
+import { Datapig } from '../Models/datapig';
 
 @Injectable({
   providedIn: 'root'
@@ -39,15 +39,23 @@ export class DatabaseService {
       })
     );
   }
-  getPesagemByID(id:string){
-    return this.http.get(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}/pesagens.json`).pipe(
-      
+  getPesagemByID(id: string) {
+    return this.http.get<{ [key: string]: Datapeso }>(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}/pesagens.json`).pipe(
+      map(responseData => {
+        const pesagensArray: Datapeso[] = [];
+        for (const key in responseData) {
+          if (responseData.hasOwnProperty(key)) {
+            pesagensArray.push({ ...(responseData as any)[key], id: key });
+          }
+        }
+        return pesagensArray;
+      })
     )
   }
   postData(data: any) {
     return this.http.post('https://baconba-project-default-rtdb.firebaseio.com/data.json', data);
   }
-  postPesagem(data:any, id:string){
+  postPesagem(data: any, id: string) {
     return this.http.post(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}/pesagens.json`, data)
   }
   editarAnimal(id: string, pigData: {
@@ -65,7 +73,7 @@ export class DatabaseService {
     return this.http.get<Datapig>(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}.json`);
   }
 
-  
+
   deleteAnimalByID(id: string) {
     return this.http.delete<Datapig>(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}.json`);
   }

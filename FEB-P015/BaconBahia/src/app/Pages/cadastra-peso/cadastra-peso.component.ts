@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DatabaseService } from '../../Services/database.service';
 import { ActivatedRoute } from '@angular/router';
+import { DatabaseService } from '../../Services/database.service';
 
 @Component({
   selector: 'app-cadastra-peso',
@@ -15,11 +15,11 @@ export class CadastraPesoComponent implements OnInit {
   id: any;
   formPesoCreate: FormGroup;
   // constructor(private DatabaseConection: DatabaseConnectionService)
-  constructor(private database : DatabaseService, private route: ActivatedRoute ) {
+  constructor(private database: DatabaseService, private route: ActivatedRoute) {
     this.formPesoCreate = new FormGroup({
 
       dataPesagem: new FormControl('', [Validators.required]),
-      porcoPeso: new FormControl('', [Validators.required]),
+      peso: new FormControl('', [Validators.required]),
 
     });
   }

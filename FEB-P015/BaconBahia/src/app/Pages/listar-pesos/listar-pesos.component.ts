@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Datapeso } from '../../Models/datapeso';
 import { DatabaseService } from '../../Services/database.service';
-import { Datapig } from '../../Models/datapig';
 
 @Component({
   selector: 'app-listar-pesos',
@@ -29,15 +28,14 @@ export class ListarPesosComponent {
 
   ListarPesagens() {
     this.database.getPesagemByID(this.id).subscribe((response) => {
-      response.
-      // this.loadedPesagem = response;
+      this.loadedPesagem = response;
       console.log(response);
     });
 
   }
-  deletePesagemByID(idList: any, idItem:any) {
+  deletePesagemByID(idList: any, idItem: any) {
     const indexToRemove = this.loadedPesagem.findIndex((pesagem) => pesagem.id = idItem);
-      this.database.deletePesagemByID(idList, idItem).subscribe(() => {
+    this.database.deletePesagemByID(idList, idItem).subscribe(() => {
       this.loadedPesagem.splice(indexToRemove, 1);
     });
   }

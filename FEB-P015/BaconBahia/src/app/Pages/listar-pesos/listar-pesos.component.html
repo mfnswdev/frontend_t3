@@ -1,5 +1,5 @@
-
-<h2>Registro de pesagens</h2> <button type="button" class="btnAdicionar" routerLink="/cadastrarPesagem/{{id}}"> Adicionar registro de pesagem</button>
+<h2>Registro de pesagens</h2> <button type="button" class="btnAdicionar" routerLink="/cadastrarPesagem/{{id}}">
+    Adicionar registro de pesagem</button>
 <!-- <ng-container *ngIf="loadedAnimais.length < 1; else loading">
     
 </ng-container> -->
@@ -15,19 +15,20 @@
                 <th>Pesagem ID</th>
                 <th>Data da Pesagem</th>
                 <th>Peso</th>
-                
+
                 <th colspan="2">Ações</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let pesagem of loadedPesagem">
-                
+
                 <td>{{ pesagem.id }}</td>
                 <td>{{ pesagem.dataPesagem }}</td>
-                <td>{{ pesagem.peso }} KG</td>
+                <td>{{ pesagem.peso }}</td>
                 <td><button type="button" class="btnEditar" routerLink="/editarPesagem/{{pesagem.id}}">Editar</button>
                 </td>
-                <td><button type="button" class="btnDeletar" (click)="deletePesagemByID(id, pesagem.id)">Deletar</button>
+                <td><button type="button" class="btnDeletar"
+                        (click)="deletePesagemByID(id, pesagem.id)">Deletar</button>
                 </td>
 
             </tr>
