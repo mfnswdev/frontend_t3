@@ -21,7 +21,7 @@ export class EditarAnimalComponent {
 
   ngOnInit() {
     this.formAnimalEdit = this.formConstrutor.group({
-      pocoId: ['', Validators.required],
+      porcoId: ['', Validators.required],
       paiId: ['', Validators.required],
       maeId: ['', Validators.required],
       dataNasc: ['', Validators.required],
@@ -36,6 +36,8 @@ export class EditarAnimalComponent {
   getAnimal(id: any) {
     this.bancoService.getAnimalByID(id).subscribe(responseData => {
       this.formAnimalEdit.setValue(responseData);
+      console.log(id);
+      console.log(responseData);
     });
   }
 
