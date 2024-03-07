@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Datapig } from '../Models/datapig';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { Datapeso } from '../Models/datapeso';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,22 @@ export class DatabaseService {
       return postArray;
     }
     ));
+  }
+
+  getPesagens(): Observable<Datapeso[]> {
+    return this.http.get<{ [key: string]: Datapig }>('https://baconba-project-default-rtdb.firebaseio.com/data.json').pipe(
+      map(responseData => {
+        const pesagensArray: Datapeso[] = [];
+        for (const key in responseData) {
+          if (responseData.hasOwnProperty(key)) {
+            // Assuming that 'pesagens' is an array within each 'Datapig' object
+            const pesagens: Datapeso[] = responseData[key].pesagens || [];
+            pesagensArray.push(...pesagens);
+          }
+        }
+        return pesagensArray;
+      })
+    );
   }
   postData(data: any) {
     return this.http.post('https://baconba-project-default-rtdb.firebaseio.com/data.json', data);
@@ -43,5 +60,9 @@ export class DatabaseService {
   
   deleteAnimalByID(id: string) {
     return this.http.delete<Datapig>(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}.json`);
+  }
+
+  deletePesagemByID(idList: string, idItem: string) {
+    return this.http.delete<Datapig>(`https://baconba-project-default-rtdb.firebaseio.com/data/${idList}/pesagens/${idItem}.json`);
   }
 }

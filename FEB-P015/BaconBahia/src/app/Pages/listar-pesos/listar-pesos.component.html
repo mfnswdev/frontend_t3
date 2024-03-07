@@ -1,0 +1,36 @@
+
+<h2>Registro de pesagens</h2>
+<!-- <ng-container *ngIf="loadedAnimais.length < 1; else loading">
+    
+</ng-container> -->
+
+<ng-container *ngIf="loadedPesagem.length < 1; else loaded">
+    <div class="loader"></div>
+</ng-container>
+
+<ng-template #loaded>
+    <table class="tickets-table" *ngIf="loadedPesagem.length >=1">
+        <thead>
+            <tr>
+                <th>Pesagem ID</th>
+                <th>Data da Pesagem</th>
+                <th>Peso</th>
+                
+                <th colspan="2">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pesagem of loadedPesagem">
+                
+                <td>{{ pesagem.id }}</td>
+                <td>{{ pesagem.dataPesagem }}</td>
+                <td>{{ pesagem.peso }} KG</td>
+                <td><button type="button" class="btnEditar" routerLink="/editarPesagem/{{pesagem.id}}">Editar</button>
+                </td>
+                <td><button type="button" class="btnDeletar" (click)="deletePesagemByID(id, pesagem.id)">Deletar</button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
