@@ -1,31 +1,42 @@
 <h2>Listagem de Animais</h2>
-<p *ngIf="loadedAnimais.length < 1">Não existem animais cadastrados!</p>
-<table class="tickets-table" *ngIf="loadedAnimais.length >=1">
-    <thead>
-        <tr>
-            <th>Brinco do Animal</th>
-            <th>Brinco do Pai</th>
-            <th>Brinco da Mãe</th>
-            <th>Data de Nascimento</th>
-            <th>Data de Saída</th>
-            <th>Sexo</th>
-            <th>Status</th>
-            <th colspan="3">Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let animal of loadedAnimais">
-            <td>{{ animal.porcoId }}</td>
-            <td>{{ animal.paiId }}</td>
-            <td>{{ animal.maeId }}</td>
-            <td>{{ animal.dataNasc }}</td>
-            <td>{{ animal.dataSaida }}</td>
-            <td>{{ animal.genero }}</td>
-            <td>{{ animal.status }}</td>
-            <td><button type="button" class="btnEditar" routerLink="/editarAnimal/{{animal.id}}">Editar</button></td>
-            <td><button type="button" class="btnDeletar" routerLink="/deletarAnimal/{{animal.id}}">Deletar</button></td>
-            <td><button type="button" class="btnPesagem" routerLink="/pesagemAnimal/{{animal.id}}">Registro de
-                    pesagens</button></td>
-        </tr>
-    </tbody>
-</table>
+<!-- <ng-container *ngIf="loadedAnimais.length < 1; else loading">
+    
+</ng-container> -->
+
+<ng-container *ngIf="loadedAnimais.length < 1; else loaded">
+    <div class="loader"></div>
+</ng-container>
+
+<ng-template #loaded>
+    <table class="tickets-table" *ngIf="loadedAnimais.length >=1">
+        <thead>
+            <tr>
+                <th>Brinco do Animal</th>
+                <th>Brinco do Pai</th>
+                <th>Brinco da Mãe</th>
+                <th>Data de Nascimento</th>
+                <th>Data de Saída</th>
+                <th>Sexo</th>
+                <th>Status</th>
+                <th colspan="3">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let animal of loadedAnimais">
+                <td>{{ animal.porcoId }}</td>
+                <td>{{ animal.paiId }}</td>
+                <td>{{ animal.maeId }}</td>
+                <td>{{ animal.dataNasc }}</td>
+                <td>{{ animal.dataSaida }}</td>
+                <td>{{ animal.genero }}</td>
+                <td>{{ animal.status }}</td>
+                <td><button type="button" class="btnEditar" routerLink="/editarAnimal/{{animal.id}}">Editar</button>
+                </td>
+                <td><button type="button" class="btnDeletar" routerLink="/deletarAnimal/{{animal.id}}">Deletar</button>
+                </td>
+                <td><button type="button" class="btnPesagem" routerLink="/pesagemAnimal/{{animal.id}}">Registro de
+                        pesagens</button></td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>

@@ -16,7 +16,7 @@ body {
 }
 
 .tickets-table th {
-  background-color: #4CAF50;
+  background-color: #8f1e00;
   color: white;
 }
 
@@ -25,7 +25,7 @@ body {
 }
 
 .tickets-table button {
-  background-color: #4CAF50;
+  background-color: #8f1e00;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -38,11 +38,11 @@ body {
 }
 
 .tickets-table button:hover {
-  background-color: #45a049;
+  background-color: #df6948;
 }
 
 .btnEditar {
-  background-color: #4CAF50;
+  background-color: #8f1e00;
 }
 
 .btnDeletar {
@@ -51,4 +51,36 @@ body {
 
 .btnPesagem {
   background-color: #008CBA;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #8f1e00;
+  width: 80px;
+  height: 80px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
