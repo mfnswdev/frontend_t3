@@ -2,13 +2,10 @@
 
 <form [formGroup]="formPesoCreate" (ngSubmit)="onSubmit()">
 
-    <!--PorcoNumb-->
-    <label for="porcoId">Nome do Pet:</label>
-    <input mask="0000" id="porcoId" formControlName="porcoId">
 
     <!-- Data da pesagem do Porco-->
-    <label for="dataNasc">Data da Pesagem:</label>
-    <input type="date" id="dataNasc" formControlName="dataNasc">
+    <label for="dataPesagem">Data da Pesagem:</label>
+    <input type="date" id="dataPesagem" formControlName="dataPesagem">
 
     <!-- Peso do porco-->
     <label for="porcoPeso">Peso do Animal:</label>
@@ -16,5 +13,5 @@
 
 
 
-    <button type="submit">Enviar Cadastro</button>
+    <button type="submit">Enviar registro do peso</button>
 </form>

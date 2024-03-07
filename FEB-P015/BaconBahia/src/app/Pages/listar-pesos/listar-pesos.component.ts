@@ -20,15 +20,18 @@ export class ListarPesosComponent {
 
   ngOnInit(): void {
 
-    this.ListarAnimais();
     this.id = this.route.snapshot.paramMap.get('id');
+    this.ListarPesagens();
+    console.log(this.loadedPesagem)
+
 
   }
 
-  ListarAnimais() {
-    this.database.getPesagens().subscribe((response) => {
-      this.loadedPesagem = response;
-  
+  ListarPesagens() {
+    this.database.getPesagemByID(this.id).subscribe((response) => {
+      response.
+      // this.loadedPesagem = response;
+      console.log(response);
     });
 
   }

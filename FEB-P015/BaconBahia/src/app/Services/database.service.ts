@@ -39,8 +39,16 @@ export class DatabaseService {
       })
     );
   }
+  getPesagemByID(id:string){
+    return this.http.get(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}/pesagens.json`).pipe(
+      
+    )
+  }
   postData(data: any) {
     return this.http.post('https://baconba-project-default-rtdb.firebaseio.com/data.json', data);
+  }
+  postPesagem(data:any, id:string){
+    return this.http.post(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}/pesagens.json`, data)
   }
   editarAnimal(id: string, pigData: {
     dateAtendimento: string,
