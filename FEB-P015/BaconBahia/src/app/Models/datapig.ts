@@ -9,5 +9,5 @@ export interface Datapig {
     dataSaida: string,
     status: string,
     id?: string,
-    pesagens?: Datapeso[]
+    pesagens? : Datapeso[]
 }
