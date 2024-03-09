@@ -19,11 +19,11 @@ export class GraficoComponent {
   loadedPesagem: Datapeso[] = [];
   id: any;
 
-  public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  barChartLabels: string[] = [];
   public barChartType = 'bar';
   public barChartLegend = true;
   public barChartData = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Pesos durante x anos', backgroundColor: '#8f1e00' },
+    { data: [0], label: 'Pesos durante x anos', backgroundColor: '#8f1e00' },
   ];
 
   public barChartOptions = {
@@ -32,14 +32,36 @@ export class GraficoComponent {
   };
 
   @ViewChild(BaseChartDirective) chart!: BaseChartDirective;
-  constructor(private database: DatabaseService, private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-
+  constructor(private database: DatabaseService, private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id');
     this.ListarPesagens();
-    console.log(this.loadedPesagem)
+    this.barChartData[0].data = [];
+
+    this.loadedPesagem.forEach((peso: Datapeso) => {
+      this.barChartLabels.push(peso.dataPesagem);
+      this.barChartData[0].data.push(peso.peso);
+
+      console.log("peso: " + peso.peso);
+      console.log("data: " + peso.dataPesagem + "\n\n");
+
+    });
   }
+
+  // ngOnInit(): void {
+
+  //   this.id = this.route.snapshot.paramMap.get('id');
+  //   this.ListarPesagens();
+  //   this.barChartData[0].data = [];
+
+  //   this.loadedPesagem.forEach((peso: Datapeso) => {
+  //     this.barChartLabels.push(peso.dataPesagem);
+  //     this.barChartData[0].data.push(peso.peso);
+
+  //     console.log("peso: " + peso.peso);
+  //     console.log("data: " + peso.dataPesagem + "\n\n");
+
+  //   });
+  // }
 
   updateChart() {
     this.chart.update();
