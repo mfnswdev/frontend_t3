@@ -25,7 +25,7 @@
                 <td>{{ pesagem.id }}</td>
                 <td>{{ pesagem.dataPesagem }}</td>
                 <td>{{ pesagem.peso }}</td>
-                <td><button type="button" class="btnEditar" routerLink="/editarPesagem/{{pesagem.id}}">Editar</button>
+                <td><button type="button" class="btnEditar" routerLink="/editarPeso/{{id}}/{{pesagem.id}}">Editar</button>
                 </td>
                 <td><button type="button" class="btnDeletar"
                         (click)="deletePesagemByID(id, pesagem.id)">Deletar</button>

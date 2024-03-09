@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatabaseService } from '../../Services/database.service';
 import { nonFutureDateValidator } from '../../Validators/non-future-age.validator';
+import { PesagemService } from '../../Services/pesagem.service';
 
 @Component({
   selector: 'app-cadastra-peso',
@@ -16,7 +17,7 @@ export class CadastraPesoComponent implements OnInit {
   id: any;
   formPesoCreate: FormGroup;
   // constructor(private DatabaseConection: DatabaseConnectionService)
-  constructor(private database: DatabaseService, private route: ActivatedRoute, private router: Router) {
+  constructor(private database: DatabaseService, private pesagemService: PesagemService, private route: ActivatedRoute, private router: Router) {
     this.formPesoCreate = new FormGroup({
 
       dataPesagem: new FormControl(null, [Validators.required, nonFutureDateValidator()]),
@@ -38,6 +39,7 @@ export class CadastraPesoComponent implements OnInit {
         next: () => {
           console.log('Cadastro realizado com sucesso!');
           alert('Cadastro realizado com sucesso!');
+          this.pesagemService.notificarNovoPesoAdicionado();
           this.router.navigate(['registroPesagem/', this.id]);
           this.formPesoCreate.reset();
         },

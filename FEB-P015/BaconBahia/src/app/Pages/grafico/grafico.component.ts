@@ -1,88 +1,95 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { BaseChartDirective } from 'ng2-charts';
 import { Datapeso } from '../../Models/datapeso';
 import { DatabaseService } from '../../Services/database.service';
+import { Chart, registerables } from 'chart.js';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { PesagemService } from '../../Services/pesagem.service';
 
 
 @Component({
   selector: 'app-grafico',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, BaseChartDirective],
+  imports: [ReactiveFormsModule, CommonModule, BaseChartDirective, FormsModule],
   templateUrl: './grafico.component.html',
   styleUrl: './grafico.component.scss',
 
 })
-export class GraficoComponent {
-  loadedPesagem: Datapeso[] = [];
-  id: any;
+export class GraficoComponent implements OnInit {
+  pesos: Datapeso[] = []
+  arrayPesos: Array<number> = []
+  arrayDatas: Array<string> = []
+  id: any
+  chart!: Chart;
 
-  barChartLabels: string[] = [];
-  public barChartType = 'bar';
-  public barChartLegend = true;
-  public barChartData = [
-    { data: [0], label: 'Pesos durante x anos', backgroundColor: '#8f1e00' },
-  ];
+  constructor(private dataBaseService: DatabaseService, private pesagemService: PesagemService, private route: ActivatedRoute) { }
+  ngOnInit(): void {
 
-  public barChartOptions = {
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
-
-  @ViewChild(BaseChartDirective) chart!: BaseChartDirective;
-  constructor(private database: DatabaseService, private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.ListarPesagens();
-    // this.barChartData[0].data = [];
+    this.fetchPesos();
 
-    // this.loadedPesagem.forEach((peso: Datapeso) => {
-    //   this.barChartLabels.push(peso.dataPesagem);
-    //   this.barChartData[0].data.push(peso.peso);
-
-    //   console.log("peso: " + peso.peso);
-    //   console.log("data: " + peso.dataPesagem + "\n\n");
-
-    // });
-  }
-
-  // ngOnInit(): void {
-
-  //   this.id = this.route.snapshot.paramMap.get('id');
-  //   this.ListarPesagens();
-  //   this.barChartData[0].data = [];
-
-  //   this.loadedPesagem.forEach((peso: Datapeso) => {
-  //     this.barChartLabels.push(peso.dataPesagem);
-  //     this.barChartData[0].data.push(peso.peso);
-
-  //     console.log("peso: " + peso.peso);
-  //     console.log("data: " + peso.dataPesagem + "\n\n");
-
-  //   });
-  // }
-
-  updateChart() {
-    this.chart.update();
-  }
-
-  ListarPesagens() {
-    this.database.getPesagemByID(this.id).subscribe((response) => {
-      this.loadedPesagem = response;
-      this.barChartData[0].data = [];
-
-      this.loadedPesagem.forEach((peso: Datapeso) => {
-        this.barChartLabels.push(peso.dataPesagem);
-        this.barChartData[0].data.push(peso.peso);
-
-        console.log("peso: " + peso.peso);
-        console.log("data: " + peso.dataPesagem + "\n\n");
-
-      });
-      console.log(response);
+    this.pesagemService.novoPesoAdicionado$.subscribe(() => {
+      this.fetchPesos();
     });
-
+    
+    
+    console.log(this.arrayDatas);
+    console.log(this.arrayPesos);
+    console.log(this.pesos);
   }
+
+  async renderChart() {
+    if (this.chart) {
+      await this.chart.destroy();
+    }
+
+    this.chart = new Chart("ctx", {
+      type: 'bar',
+      data: {
+        labels: this.arrayDatas,
+        datasets: [{
+          label: 'Pesagens',
+          data: this.arrayPesos,
+          borderWidth: 1,
+          borderColor: '#cdae73',
+          backgroundColor: '#cdae73'
+        }, {
+          type: 'line',
+          label: '',
+          data: this.arrayPesos,
+          borderColor: '#7b7b7b',
+          backgroundColor: '#7b7b7b'
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            type: 'linear',
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+
+  fetchPesos() {
+    this.dataBaseService.getPesagemByID(this.id).subscribe((response) => {
+      this.pesos = response;
+      this.arrayPesos = [];
+      this.arrayDatas = [];
+
+      this.pesos.forEach(element => {
+        this.arrayPesos.push(element.peso)
+        this.arrayDatas.push(element.dataPesagem)
+      });
+      this.renderChart();
+    });
+  }
+
+
 }
 

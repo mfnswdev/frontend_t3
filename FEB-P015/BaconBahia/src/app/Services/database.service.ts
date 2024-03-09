@@ -52,6 +52,10 @@ export class DatabaseService {
       })
     )
   }
+
+  getPesagemDbByID(id: string, pesagemId: string) {
+    return this.http.get<Datapeso>(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}/pesagens/${pesagemId}.json`);
+  }
   postData(data: any) {
     return this.http.post('https://baconba-project-default-rtdb.firebaseio.com/data.json', data);
   }
@@ -59,18 +63,23 @@ export class DatabaseService {
     return this.http.post(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}/pesagens.json`, data)
   }
   editarAnimal(id: string, pigData: {
-    dateAtendimento: string,
-    tutorName: string,
-    petName: string,
-    especie: string,
-    race: string,
-    obs: string
+    porcoId: number,
+    paiId: number,
+    maeId: number,
+    dataNasc: string,
+    dataSaida: string,
+    status: string,
+    genero: string
   }
   ) {
     return this.http.put(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}.json`, pigData, { observe: 'response' });
   }
   getAnimalByID(id: string) {
     return this.http.get<Datapig>(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}.json`);
+  }
+
+  updatePesagem(id: string, pesagemId: string, weightValue: number): Observable<any> {
+    return this.http.patch(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}/pesagens/${pesagemId}.json`, { peso : weightValue }, { observe: 'response' });
   }
 
 

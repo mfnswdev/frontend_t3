@@ -1,13 +1,80 @@
+<div class="filter-container">
+    <label for="paiIdFiltro"
+      >Filtrar por Brinco do Pai:
+      <input
+        type="number"
+        id="paiIdFiltro"
+        [(ngModel)]="paiIdFiltro"
+        (input)="applyFilters()"
+      />
+    </label>
+
+    <label for="maeIdFiltro"
+      >Filtrar por Brinco da Mãe:
+      <input
+        type="number"
+        id="maeIdFiltro"
+        [(ngModel)]="maeIdFiltro"
+        (input)="applyFilters()"
+      />
+    </label>
+
+    <label for="dataNascFiltro"
+      >Filtrar por Data de Nascimento:
+      <input
+        type="date"
+        id="dataNascFiltro"
+        [(ngModel)]="dataNascFiltro"
+        (change)="applyFilters()"
+      />
+    </label>
+
+    <label for="dataSaidaFiltro"
+      >Filtrar por Data de Saída:<input
+        type="date"
+        id="dataSaidaFiltro"
+        [(ngModel)]="dataSaidaFiltro"
+        (change)="applyFilters()"
+      />
+    </label>
+
+    <label for="generoFiltro"
+      >Filtrar por Sexo:
+      <select
+        id="generoFiltro"
+        [(ngModel)]="generoFiltro"
+        (change)="applyFilters()"
+      >
+        <option value="">Todos</option>
+        <option value="macho">Macho</option>
+        <option value="femea">Fêmea</option>
+      </select>
+    </label>
+
+    <label for="statusFiltro"
+      >Filtrar por Status:
+      <select
+        id="statusFiltro"
+        [(ngModel)]="statusFiltro"
+        (change)="applyFilters()"
+      >
+        <option value="">Todos</option>
+        <option value="ativo">Ativo</option>
+        <option value="vendido">Vendido</option>
+        <option value="abate">Abatido</option>
+      </select>
+    </label>
+  </div>
 <h2>Listagem de Animais</h2>
 
-<ng-container *ngIf="loadedAnimais.length < 1; else loaded">
+<ng-container *ngIf="filteredAnimais.length < 1; else loaded">
     <div class="loader-container">
         <div class="loader"></div>
     </div>
 </ng-container>
 
 <ng-template #loaded>
-    <table class="tickets-table" *ngIf="loadedAnimais.length >=1">
+    <table class="tickets-table" *ngIf="filteredAnimais.length >=1">
         <thead>
             <tr>
                 <th>Brinco do Animal</th>
@@ -21,7 +88,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let animal of loadedAnimais">
+            <tr *ngFor="let animal of filteredAnimais">
                 <td>{{ animal.porcoId }}</td>
                 <td>{{ animal.paiId }}</td>
                 <td>{{ animal.maeId }}</td>
