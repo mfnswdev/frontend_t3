@@ -5,23 +5,34 @@
     <!--Brinco do Animal-->
     <label for="porcoId">Brinco do Animal:</label>
     <input mask="0000" id="porcoId" formControlName="porcoId">
-    
+    <span *ngIf="!formAnimalCreate.get('porcoId')?.valid && formAnimalCreate.get('porcoId')?.touched">
+        Por favor, insira o brinco do animal!
+    </span>
+
     <!--Brinco do Pai-->
     <label for="paiId">Brinco do pai:</label>
     <input mask="0000" id="paiId" formControlName="paiId">
-    
+    <span *ngIf="!formAnimalCreate.get('paiId')?.valid && formAnimalCreate.get('paiId')?.touched">
+        Por favor, insira o brinco do pai!
+    </span>
+
     <!--Brinco do Mãe-->
     <label for="maeId">Brinco da mãe:</label>
     <input mask="0000" id="maeId" formControlName="maeId">
-    
+    <span *ngIf="!formAnimalCreate.get('maeId')?.valid && formAnimalCreate.get('maeId')?.touched">
+        Por favor, insira o brinco da mãe!
+    </span>
+
     <!-- Data nascimento do Porco-->
     <label for="dataNasc">Data de Nascimento:</label>
     <input type="date" id="dataNasc" formControlName="dataNasc">
-    
+    <span *ngIf="!formAnimalCreate.get('dataNasc')?.valid && formAnimalCreate.get('dataNasc')?.touched">
+        Por favor, insira a data de nascimento valida!
+    </span>
     <!-- Data de saida do Porco-->
     <label for="dataSaida">Data de Saída:</label>
     <input type="date" id="dataSaida" formControlName="dataSaida">
-    
+
     <!-- Status do Porco-->
     <label for="status">Status do Animal:</label>
     <select name="status" id="status" formControlName="status">
@@ -36,6 +47,7 @@
         <option value="macho">Porco</option>
         <option value="femea">Porca</option>
     </select>
+    
 
     <button type="submit">Enviar Cadastro</button>
 </form>

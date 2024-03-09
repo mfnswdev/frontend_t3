@@ -6,6 +6,9 @@
     <!-- Data da pesagem do Porco-->
     <label for="dataPesagem">Data da Pesagem:</label>
     <input type="date" id="dataPesagem" formControlName="dataPesagem">
+    <span *ngIf="!formPesoCreate.get('dataPesagem')?.valid && formPesoCreate.get('dataPesagem')?.touched">
+        Por favor, insira uma data valida!
+    </span>
 
     <!-- Peso do porco-->
     <label for="porcoPeso">Peso do Animal:</label>
