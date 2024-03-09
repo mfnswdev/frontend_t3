@@ -1,95 +1,78 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { BaseChartDirective } from 'ng2-charts';
 import { Datapeso } from '../../Models/datapeso';
 import { DatabaseService } from '../../Services/database.service';
-import { Chart, registerables } from 'chart.js';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { PesagemService } from '../../Services/pesagem.service';
 
 
 @Component({
   selector: 'app-grafico',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, BaseChartDirective, FormsModule],
+  imports: [ReactiveFormsModule, CommonModule, BaseChartDirective],
   templateUrl: './grafico.component.html',
   styleUrl: './grafico.component.scss',
 
 })
-export class GraficoComponent implements OnInit {
-  pesos: Datapeso[] = []
-  arrayPesos: Array<number> = []
-  arrayDatas: Array<string> = []
-  id: any
-  chart!: Chart;
+export class GraficoComponent {
+  loadedPesagem: Datapeso[] = [];
+  id: any;
 
-  constructor(private dataBaseService: DatabaseService, private pesagemService: PesagemService, private route: ActivatedRoute) { }
+  barChartLabels: string[] = [];
+  public barChartType = 'bar';
+  public barChartLegend = true;
+
+  public barChartData = [
+    { data: [0], label: 'Pesos durante x anos', backgroundColor: '#8f1e00' },
+  ];
+
+  public barChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+
+  @ViewChild(BaseChartDirective) chart!: BaseChartDirective;
+  constructor(private database: DatabaseService, private route: ActivatedRoute) { }
+
   ngOnInit(): void {
 
     this.id = this.route.snapshot.paramMap.get('id');
-    this.fetchPesos();
+    this.ListarPesagens();
+    this.barChartData[0].data = [];
 
-    this.pesagemService.novoPesoAdicionado$.subscribe(() => {
-      this.fetchPesos();
-    });
-    
-    
-    console.log(this.arrayDatas);
-    console.log(this.arrayPesos);
-    console.log(this.pesos);
-  }
+    this.loadedPesagem.forEach((peso: Datapeso) => {
+      this.barChartLabels.push(peso.dataPesagem);
+      this.barChartData[0].data.push(peso.peso);
 
-  async renderChart() {
-    if (this.chart) {
-      await this.chart.destroy();
-    }
+      console.log("peso: " + peso.peso);
+      console.log("data: " + peso.dataPesagem + "\n\n");
 
-    this.chart = new Chart("ctx", {
-      type: 'bar',
-      data: {
-        labels: this.arrayDatas,
-        datasets: [{
-          label: 'Pesagens',
-          data: this.arrayPesos,
-          borderWidth: 1,
-          borderColor: '#cdae73',
-          backgroundColor: '#cdae73'
-        }, {
-          type: 'line',
-          label: '',
-          data: this.arrayPesos,
-          borderColor: '#7b7b7b',
-          backgroundColor: '#7b7b7b'
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            type: 'linear',
-            beginAtZero: true
-          }
-        }
-      }
     });
   }
 
-  fetchPesos() {
-    this.dataBaseService.getPesagemByID(this.id).subscribe((response) => {
-      this.pesos = response;
-      this.arrayPesos = [];
-      this.arrayDatas = [];
+  updateChart() {
+    this.chart.update();
+  }
 
-      this.pesos.forEach(element => {
-        this.arrayPesos.push(element.peso)
-        this.arrayDatas.push(element.dataPesagem)
+  async ListarPesagens() {
+    await this.database.getPesagemByID(this.id).subscribe(async (response) => {
+      this.loadedPesagem = response;
+      this.barChartData[0].data = [];
+
+      await this.loadedPesagem.forEach((peso: Datapeso) => {
+        this.barChartLabels.push(peso.dataPesagem);
+        this.barChartData[0].data.push(peso.peso);
+
+        console.log("peso: " + peso.peso);
+        console.log("data: " + peso.dataPesagem + "\n\n");
+
       });
-      this.renderChart();
+
+      this.updateChart();
+      console.log(response);
     });
+
   }
-
-
 }
 

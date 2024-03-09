@@ -1,3 +1,5 @@
-<div style="display: block;">
-    <canvas id="ctx"></canvas>
+<div style="display: block; height: 50%; width: 70vw;">
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+        [legend]="barChartLegend">
+    </canvas>
 </div>
