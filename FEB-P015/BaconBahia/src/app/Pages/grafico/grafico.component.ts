@@ -35,16 +35,16 @@ export class GraficoComponent {
   constructor(private database: DatabaseService, private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id');
     this.ListarPesagens();
-    this.barChartData[0].data = [];
+    // this.barChartData[0].data = [];
 
-    this.loadedPesagem.forEach((peso: Datapeso) => {
-      this.barChartLabels.push(peso.dataPesagem);
-      this.barChartData[0].data.push(peso.peso);
+    // this.loadedPesagem.forEach((peso: Datapeso) => {
+    //   this.barChartLabels.push(peso.dataPesagem);
+    //   this.barChartData[0].data.push(peso.peso);
 
-      console.log("peso: " + peso.peso);
-      console.log("data: " + peso.dataPesagem + "\n\n");
+    //   console.log("peso: " + peso.peso);
+    //   console.log("data: " + peso.dataPesagem + "\n\n");
 
-    });
+    // });
   }
 
   // ngOnInit(): void {
@@ -70,6 +70,16 @@ export class GraficoComponent {
   ListarPesagens() {
     this.database.getPesagemByID(this.id).subscribe((response) => {
       this.loadedPesagem = response;
+      this.barChartData[0].data = [];
+
+      this.loadedPesagem.forEach((peso: Datapeso) => {
+        this.barChartLabels.push(peso.dataPesagem);
+        this.barChartData[0].data.push(peso.peso);
+
+        console.log("peso: " + peso.peso);
+        console.log("data: " + peso.dataPesagem + "\n\n");
+
+      });
       console.log(response);
     });
 
