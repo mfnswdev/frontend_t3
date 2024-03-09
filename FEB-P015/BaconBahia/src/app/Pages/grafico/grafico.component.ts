@@ -44,10 +44,6 @@ export class GraficoComponent {
     this.loadedPesagem.forEach((peso: Datapeso) => {
       this.barChartLabels.push(peso.dataPesagem);
       this.barChartData[0].data.push(peso.peso);
-
-      console.log("peso: " + peso.peso);
-      console.log("data: " + peso.dataPesagem + "\n\n");
-
     });
   }
 
@@ -63,10 +59,6 @@ export class GraficoComponent {
       await this.loadedPesagem.forEach((peso: Datapeso) => {
         this.barChartLabels.push(peso.dataPesagem);
         this.barChartData[0].data.push(peso.peso);
-
-        console.log("peso: " + peso.peso);
-        console.log("data: " + peso.dataPesagem + "\n\n");
-
       });
 
       this.updateChart();
