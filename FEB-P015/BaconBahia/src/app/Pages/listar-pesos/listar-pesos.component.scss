@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .tickets-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  .tickets-table th,
+  .tickets-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .tickets-table th {
+    background-color: #8f1e00;
+    color: white;
+  }
+  
+  .tickets-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .tickets-table button {
+    background-color: #8f1e00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .tickets-table button:hover {
+    background-color: #df6948;
+  }
+  
+  .btnEditar {
+    background-color: #8f1e00;
+  }
+  
+  .btnDeletar {
+    background-color: #f44336;
+  }
+  
+  .btnPesagem {
+    background-color: #008CBA;
+  }
+  
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #8f1e00;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+  
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
