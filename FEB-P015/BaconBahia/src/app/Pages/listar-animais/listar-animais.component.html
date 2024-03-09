@@ -17,7 +17,7 @@
                 <th>Data de Saída</th>
                 <th>Sexo</th>
                 <th>Status</th>
-                <th colspan="3">Ações</th>
+                <th colspan="4">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -35,6 +35,11 @@
                 </td>
                 <td><button type="button" class="btnPesagem" routerLink="/registroPesagem/{{animal.id}}">Registro de
                         pesagens</button></td>
+                <td>
+                    <button type="button" class="btnGrafico" routerLink="/grafico/{{animal.id}}">
+                        <i class="fas fa-chart-bar"></i> Gráfico
+                    </button>
+                </td>
             </tr>
         </tbody>
     </table>
