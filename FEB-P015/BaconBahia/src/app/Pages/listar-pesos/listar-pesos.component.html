@@ -5,7 +5,7 @@
 </ng-container> -->
 
 <ng-container *ngIf="loadedPesagem.length < 1; else loaded">
-    <div class="loader"></div>
+    <h4>Nenhum peso cadastrado!</h4>
 </ng-container>
 
 <ng-template #loaded>
@@ -25,7 +25,8 @@
                 <td>{{ pesagem.id }}</td>
                 <td>{{ pesagem.dataPesagem }}</td>
                 <td>{{ pesagem.peso }}</td>
-                <td><button type="button" class="btnEditar" routerLink="/editarPeso/{{id}}/{{pesagem.id}}">Editar</button>
+                <td><button type="button" class="btnEditar"
+                        routerLink="/editarPeso/{{id}}/{{pesagem.id}}">Editar</button>
                 </td>
                 <td><button type="button" class="btnDeletar"
                         (click)="deletePesagemByID(id, pesagem.id)">Deletar</button>

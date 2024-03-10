@@ -2,6 +2,10 @@ body {
   font-family: Arial, sans-serif;
 }
 
+h2 {
+  color: #5c1300;
+}
+
 .tickets-table {
   width: 100%;
   border-collapse: collapse;
@@ -88,4 +92,29 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.filter-container label {
+  color: #8f1e00;
+  font-weight: bold;
+}
+
+.filter-container input,
+.filter-container select {
+  padding: 5px;
+  border: 2px solid #8f1e00;
+  border-radius: 5px;
+}
+
+.filter-container input:focus,
+.filter-container select:focus {
+  outline: none;
+  box-shadow: 0 0 5px #8f1e00;
 }
