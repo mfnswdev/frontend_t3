@@ -13,14 +13,14 @@ import { EditarPesoComponent } from './Pages/editar-peso/editar-peso.component';
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
-    { path: 'cadastrarAnimal', component: CadastroPigComponent },
-    { path: 'listarAnimais', component: ListarAnimaisComponent },
-    { path: 'editarAnimal/:id', component: EditarAnimalComponent },
-    { path: 'cadastrarPesagem/:id', component: CadastraPesoComponent },
-    { path: 'registroPesagem/:id', component: ListarPesosComponent},
-    { path: 'grafico/:id', component: GraficoComponent },
+    { path: 'cadastrarAnimal', component: CadastroPigComponent, canActivate: [AuthGuard]},
+    { path: 'listarAnimais', component: ListarAnimaisComponent, canActivate: [AuthGuard]},
+    { path: 'editarAnimal/:id', component: EditarAnimalComponent, canActivate: [AuthGuard]},
+    { path: 'cadastrarPesagem/:id', component: CadastraPesoComponent, canActivate: [AuthGuard]},
+    { path: 'registroPesagem/:id', component: ListarPesosComponent, canActivate: [AuthGuard]},
+    { path: 'grafico/:id', component: GraficoComponent, canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent},
-    { path: 'editarPeso/:id/:pesagemId', component: EditarPesoComponent},
+    { path: 'editarPeso/:id/:pesagemId',  component: EditarPesoComponent, canActivate: [AuthGuard]},
 
 
 

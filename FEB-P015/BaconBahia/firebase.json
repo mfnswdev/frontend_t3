@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/bacon-bahia/browser/",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
