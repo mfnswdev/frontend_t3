@@ -57,7 +57,8 @@ export class GraficoComponent {
       this.barChartData[0].data = [];
 
       await this.loadedPesagem.forEach((peso: Datapeso) => {
-        this.barChartLabels.push(peso.dataPesagem);
+        var data = new Date(peso.dataPesagem);
+        this.barChartLabels.push(data.toLocaleDateString('pt-BR'));
         this.barChartData[0].data.push(peso.peso);
       });
 
