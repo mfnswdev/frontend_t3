@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 import { User } from "../Models/user";
 import { tap } from "rxjs/internal/operators/tap";
+import { Observable, map } from "rxjs";
 
 interface AuthResponseData {
   idToken: string;
@@ -68,4 +69,9 @@ export class AuthService {
   logout() {
     this.usuario.next(new User('', '', '', new Date()));
   }
+
 }
+
+
+
+
