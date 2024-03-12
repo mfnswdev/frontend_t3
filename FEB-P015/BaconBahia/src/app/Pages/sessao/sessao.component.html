@@ -1,0 +1,35 @@
+
+<h2>Manejo de Animais</h2> <button type="button" class="btnAdicionar" routerLink="/cadastrarSessao/">
+    Adicionar sessão</button>
+
+<ng-container *ngIf="loadedSessoes.length < 1; else loaded">
+  <div class="loader-container">
+    <h1>Nenhum item encontrado!</h1>
+  </div>
+</ng-container>
+
+<ng-template #loaded>
+  <table class="tickets-table" *ngIf="loadedSessoes.length >=1">
+    <thead>
+      <tr>
+        <th>Id da sessão</th>
+        <th>Data da sessão</th>
+        <th>Descricao</th>
+        <th colspan="4">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sessao of loadedSessoes">
+        <td>{{ sessao.id }}</td>
+        <td>{{ sessao.data }}</td>
+        <td>{{ sessao.descricao }}</td>
+        
+        <td><button type="button" class="btnEditar" routerLink="/editarSessao/{{sessao.id}}">Editar</button>
+        </td>
+        <td><button type="button" class="btnDeletar" (click)="deleteSessaoByID(sessao.id)">Deletar</button>
+        </td>
+        <td><button type="button" class="btnPesagem" routerLink="/registroSessao/{{sessao.id}}">Registro da sessão</button></td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>

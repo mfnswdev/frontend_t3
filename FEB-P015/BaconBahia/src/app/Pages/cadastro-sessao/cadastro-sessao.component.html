@@ -1,0 +1,20 @@
+<h2>Registro de Sessão</h2>
+
+<form [formGroup]="formSessaoCreate" (ngSubmit)="onSubmit()">
+
+    <label for="descricao">Descricão da sessão:</label>
+    <input type="text" id="descricao" formControlName="descricao">
+>
+    <label for="dataPesagem">Data da sessão:</label>
+    <input type="date" id="dataPesagem" formControlName="dataPesagem">
+
+    <span *ngIf="!formPesoCreate.get('dataPesagem')?.valid && formPesoCreate.get('dataPesagem')?.touched">
+        Por favor, insira uma data valida!
+    </span>
+
+    <!-- Peso do porco-->
+    <label for="porcoPeso">Peso do Animal:</label>
+    <input mask="0000" id="peso" formControlName="peso">
+
+    <button type="submit">Enviar registro do peso</button>
+</form>

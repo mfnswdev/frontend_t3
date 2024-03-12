@@ -16,7 +16,7 @@ import { BrowserModule } from '@angular/platform-browser';
 })
 export class ListarAnimaisComponent implements OnInit {
   loadedAnimais: Datapig[] = [];
-  
+    
   filteredAnimais: Datapig[] = []
   paiIdFiltro: string = ''
   maeIdFiltro: string = ''

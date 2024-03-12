@@ -12,7 +12,7 @@ export class DatabaseService {
   constructor(private http: HttpClient) { }
 
   getData() {
-    return this.http.get<{ [key: string]: Datapig }>('https://baconba-project-default-rtdb.firebaseio.com/data.json').pipe(map(responseData => {
+    return this.http.get<{ [key: string]: Datapig }>('https://baconba-project-default-rtdb.firebaseio.com/data/animais.json').pipe(map(responseData => {
       const postArray: Datapig[] = [];
       for (const key in responseData) {
         if (responseData.hasOwnProperty(key)) {
@@ -25,7 +25,7 @@ export class DatabaseService {
   }
 
   getPesagens(): Observable<Datapeso[]> {
-    return this.http.get<{ [key: string]: Datapig }>('https://baconba-project-default-rtdb.firebaseio.com/data.json').pipe(
+    return this.http.get<{ [key: string]: Datapig }>('https://baconba-project-default-rtdb.firebaseio.com/data/animais.json').pipe(
       map(responseData => {
         const pesagensArray: Datapeso[] = [];
         for (const key in responseData) {
@@ -40,7 +40,7 @@ export class DatabaseService {
     );
   }
   getPesagemByID(id: string) {
-    return this.http.get<{ [key: string]: Datapeso }>(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}/pesagens.json`).pipe(
+    return this.http.get<{ [key: string]: Datapeso }>(`https://baconba-project-default-rtdb.firebaseio.com/data/animais/${id}/pesagens.json`).pipe(
       map(responseData => {
         const pesagensArray: Datapeso[] = [];
         for (const key in responseData) {
@@ -54,13 +54,13 @@ export class DatabaseService {
   }
 
   getPesagemDbByID(id: string, pesagemId: string) {
-    return this.http.get<Datapeso>(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}/pesagens/${pesagemId}.json`);
+    return this.http.get<Datapeso>(`https://baconba-project-default-rtdb.firebaseio.com/data/animais/${id}/pesagens/${pesagemId}.json`);
   }
   postData(data: any) {
-    return this.http.post('https://baconba-project-default-rtdb.firebaseio.com/data.json', data);
+    return this.http.post('https://baconba-project-default-rtdb.firebaseio.com/data/animais.json', data);
   }
   postPesagem(data: any, id: string) {
-    return this.http.post(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}/pesagens.json`, data)
+    return this.http.post(`https://baconba-project-default-rtdb.firebaseio.com/data/animais/${id}/pesagens.json`, data)
   }
   editarAnimal(id: string, pigData: {
     porcoId: number,
@@ -72,22 +72,22 @@ export class DatabaseService {
     genero: string
   }
   ) {
-    return this.http.put(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}.json`, pigData, { observe: 'response' });
+    return this.http.put(`https://baconba-project-default-rtdb.firebaseio.com/data/animais/${id}.json`, pigData, { observe: 'response' });
   }
   getAnimalByID(id: string) {
-    return this.http.get<Datapig>(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}.json`);
+    return this.http.get<Datapig>(`https://baconba-project-default-rtdb.firebaseio.com/data/animais/${id}.json`);
   }
 
   updatePesagem(id: string, pesagemId: string, weightValue: number): Observable<any> {
-    return this.http.patch(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}/pesagens/${pesagemId}.json`, { peso : weightValue }, { observe: 'response' });
+    return this.http.patch(`https://baconba-project-default-rtdb.firebaseio.com/data/animais/${id}/pesagens/${pesagemId}.json`, { peso: weightValue }, { observe: 'response' });
   }
 
 
   deleteAnimalByID(id: string) {
-    return this.http.delete<Datapig>(`https://baconba-project-default-rtdb.firebaseio.com/data/${id}.json`);
+    return this.http.delete<Datapig>(`https://baconba-project-default-rtdb.firebaseio.com/data/animais/${id}.json`);
   }
 
   deletePesagemByID(idList: string, idItem: string) {
-    return this.http.delete<Datapig>(`https://baconba-project-default-rtdb.firebaseio.com/data/${idList}/pesagens/${idItem}.json`);
+    return this.http.delete<Datapig>(`https://baconba-project-default-rtdb.firebaseio.com/data/animais/${idList}/pesagens/${idItem}.json`);
   }
 }
