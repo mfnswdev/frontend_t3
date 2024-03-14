@@ -6,13 +6,13 @@ import { DataSessao } from '../../Models/datasessao';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-sessao',
+  selector: 'app-listar-sessoes',
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
-  templateUrl: './sessao.component.html',
-  styleUrl: './sessao.component.scss'
+  templateUrl: './listar-sessoes.component.html',
+  styleUrl: './listar-sessoes.component.scss'
 })
-export class SessaoComponent implements OnInit {
+export class ListarSessoesComponent implements OnInit {
   loadedSessoes: DataSessao[] = [];
 
   ngOnInit(): void {

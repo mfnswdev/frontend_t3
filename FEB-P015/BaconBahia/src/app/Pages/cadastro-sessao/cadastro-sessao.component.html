@@ -2,19 +2,27 @@
 
 <form [formGroup]="formSessaoCreate" (ngSubmit)="onSubmit()">
 
-    <label for="descricao">Descricão da sessão:</label>
-    <input type="text" id="descricao" formControlName="descricao">
->
-    <label for="dataPesagem">Data da sessão:</label>
-    <input type="date" id="dataPesagem" formControlName="dataPesagem">
+    <label for="data">Data da sessão:</label>
+    <input type="date" id="data" formControlName="data">
 
-    <span *ngIf="!formPesoCreate.get('dataPesagem')?.valid && formPesoCreate.get('dataPesagem')?.touched">
+    <span *ngIf="!formSessaoCreate.get('data')?.valid && formSessaoCreate.get('data')?.touched">
         Por favor, insira uma data valida!
     </span>
 
-    <!-- Peso do porco-->
-    <label for="porcoPeso">Peso do Animal:</label>
-    <input mask="0000" id="peso" formControlName="peso">
+    <label for="descricao">Descricão da sessão:</label>
+    <input type="text" id="descricao" formControlName="descricao">
+    
+    <label for="porcoId">Animais disponíveis</label>
+    <ng-multiselect-dropdown [settings]="dropdownSettings"
+    [data]="dropdownList" formControlName="porcoId">
+    </ng-multiselect-dropdown>
 
-    <button type="submit">Enviar registro do peso</button>
+    <label for="atividades">Atividades Disponíveis</label>
+    <ng-multiselect-dropdown
+    [settings]="dropdownAtividadeSettings"
+    [data]="dropdownAtividadeList"
+    formControlName="atividades"
+    ></ng-multiselect-dropdown>
+
+    <button type="submit">Enviar registro de sessão</button>
 </form>

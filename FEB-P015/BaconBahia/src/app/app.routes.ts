@@ -9,6 +9,8 @@ import { ListarPesosComponent } from './Pages/listar-pesos/listar-pesos.componen
 import { LoginComponent } from './Pages/login/login.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { EditarPesoComponent } from './Pages/editar-peso/editar-peso.component';
+import { ListarSessoesComponent } from './Pages/listar-sessoes/listar-sessoes.component';
+import { CadastroSessaoComponent } from './Pages/cadastro-sessao/cadastro-sessao.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,6 +23,8 @@ export const routes: Routes = [
     { path: 'grafico/:id', component: GraficoComponent, canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent},
     { path: 'editarPeso/:id/:pesagemId',  component: EditarPesoComponent, canActivate: [AuthGuard]},
+    { path: 'listarSessoes', component: ListarSessoesComponent },
+    { path: 'cadastrarSessao', component: CadastroSessaoComponent}
 
 
 
