@@ -28,7 +28,8 @@ export class CadastroSessaoComponent implements OnInit {
       'porcoId': new FormControl([], Validators.required),
       'descricao': new FormControl('', Validators.required),
       'data': new FormControl('', Validators.required),
-      'atividades': new FormControl([], Validators.required)
+      'atividades': new FormControl([], Validators.required),
+      'statusAtividades': new FormControl([0,1], Validators.required),
     })
   }
     ngOnInit(): void {
