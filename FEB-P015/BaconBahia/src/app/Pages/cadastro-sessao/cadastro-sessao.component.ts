@@ -31,7 +31,7 @@ export class CadastroSessaoComponent implements OnInit {
       'atividades': new FormControl([], Validators.required)
     })
   }
-  ngOnInit(): void {
+    ngOnInit(): void {
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'id',
@@ -50,8 +50,8 @@ export class CadastroSessaoComponent implements OnInit {
 
     this.dropdownAtividadeList = this.getAtividades();
 
-    this.fetchSuinos();
-    this.dropdownList = this.loadedAnimais;
+     this.fetchSuinos();
+
     console.log(this.loadedAnimais);
   }
 
@@ -62,7 +62,7 @@ export class CadastroSessaoComponent implements OnInit {
     { atv_id: 4, atv_text: 'Eutanasia' }]
   }
 
-  fetchSuinos(): void {
+   fetchSuinos(): void {
     this.dbService.getData()
       .subscribe({
         next: (data: Datapig[]) => {
