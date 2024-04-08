@@ -15,16 +15,16 @@ import { CadastroSessaoComponent } from './Pages/cadastro-sessao/cadastro-sessao
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
-    { path: 'cadastrarAnimal', component: CadastroPigComponent, canActivate: [AuthGuard]},
-    { path: 'listarAnimais', component: ListarAnimaisComponent, canActivate: [AuthGuard]},
-    { path: 'editarAnimal/:id', component: EditarAnimalComponent, canActivate: [AuthGuard]},
-    { path: 'cadastrarPesagem/:id', component: CadastraPesoComponent, canActivate: [AuthGuard]},
-    { path: 'registroPesagem/:id', component: ListarPesosComponent, canActivate: [AuthGuard]},
-    { path: 'grafico/:id', component: GraficoComponent, canActivate: [AuthGuard]},
-    { path: 'login', component: LoginComponent},
-    { path: 'editarPeso/:id/:pesagemId',  component: EditarPesoComponent, canActivate: [AuthGuard]},
+    { path: 'cadastrarAnimal', component: CadastroPigComponent, canActivate: [AuthGuard] },
+    { path: 'listarAnimais', component: ListarAnimaisComponent, canActivate: [AuthGuard], },
+    { path: 'editarAnimal/:id', loadComponent: () => import('./Pages/editar-animal/editar-animal.component').then(m => m.EditarAnimalComponent), canActivate: [AuthGuard] },
+    { path: 'cadastrarPesagem/:id', loadComponent: () => import('./Pages/cadastra-peso/cadastra-peso.component').then(m => m.CadastraPesoComponent), canActivate: [AuthGuard]},
+    { path: 'registroPesagem/:id', loadComponent: () => import('./Pages/listar-pesos/listar-pesos.component').then(m => m.ListarPesosComponent), canActivate: [AuthGuard]},
+    { path: 'grafico/:id', loadComponent: () => import('./Pages/grafico/grafico.component').then(m => m.GraficoComponent), canActivate: [AuthGuard]},
+    { path: 'login', component: LoginComponent },
+    { path: 'editarPeso/:id/:pesagemId',loadComponent: () => import('./Pages/editar-peso/editar-peso.component').then(m => m.EditarPesoComponent), canActivate: [AuthGuard]},
     { path: 'listarSessoes', component: ListarSessoesComponent },
-    { path: 'cadastrarSessao', component: CadastroSessaoComponent}
+    { path: 'cadastrarSessao', component: CadastroSessaoComponent }
 
 
 
