@@ -23,7 +23,11 @@ export class SessaoDBService {
     ));
   }  
   postData(data: any) {
-    return this.http.post('https://baconba-project-default-rtdb.firebaseio.com/data/sessoes.json', data);
+    return this.http.post<{name: string}>('https://baconba-project-default-rtdb.firebaseio.com/data/sessoes.json', data).pipe(
+      map((responseData: {name: string}) => {
+        return responseData.name;
+      })
+    );
   }
 
   editarSessao(id: string, DataSessao: {

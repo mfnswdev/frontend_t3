@@ -24,6 +24,7 @@ export class CadastroSessaoComponent implements OnInit {
 
   formSessaoCreate: FormGroup;
   loadedAnimais: Datapig[] = [];
+  idSessao: any;
   constructor(private database: SessaoDBService, private route: ActivatedRoute, private router: Router, private dbService: DatabaseService) {
     this.formSessaoCreate = new FormGroup({
       'porcoId': new FormControl([], Validators.required),
@@ -84,7 +85,7 @@ export class CadastroSessaoComponent implements OnInit {
         for (const atividadeId of sessao.atividades) {
             // Criar instância de PorcoAtividade com os dados da sessao e status false
             const porcoAtividade: PorcoAtividade = {
-                sessaoId: sessao.id || '', // Se não houver id na sessão, use uma string vazia
+                sessaoId: this.idSessao, // Se não houver id na sessão, use uma string vazia
                 porcoId: porcoId,
                 atividadeId: atividadeId,
                 status: false
@@ -104,30 +105,34 @@ export class CadastroSessaoComponent implements OnInit {
     }
     else {
       this.database.postData(this.formSessaoCreate.value).subscribe({
-        next: () => {
-          console.log('Sessão registrada com sucesso!');
+        next: (idSessao: string) => {
+
+          this.idSessao = idSessao;
+          console.log('Sessão registrada com sucesso!', idSessao);
           alert('Sessão registrada com sucesso!');
-          this.router.navigate(['listarSessoes']);
+
+          var atividades: PorcoAtividade[] = this.criarPorcoAtividades(this.formSessaoCreate.value);
+          this.database.postPorcoAtividade(atividades).subscribe({
+            next: () => {
+              console.log('PorcoAtividade registrada com sucesso!');
+              alert('PorcoAtividade registrada com sucesso!');
+              this.router.navigate(['listarSessoes']);
+            },
+            error: (erro) => {
+              console.error('Erro ao registrar PorcoAtividade:', erro);
+              alert('Ocorreu um erro ao registrar a PorcoAtividade. Por favor, tente novamente!');
+            }
+          });
         },
         error: (erro) => {
           console.error('Erro ao registrar sessão:', erro);
           alert('Ocorreu um erro ao registrar a sessão. Por favor, tente novamente!');
         }
       });
+      
 
       // Criar instância de DataSessao com os dados do formulário
-      var atividades: PorcoAtividade[] = this.criarPorcoAtividades(this.formSessaoCreate.value);
-      this.database.postPorcoAtividade(atividades).subscribe({
-        next: () => {
-          console.log('PorcoAtividade registrada com sucesso!');
-          alert('PorcoAtividade registrada com sucesso!');
-          this.router.navigate(['listarSessoes']);
-        },
-        error: (erro) => {
-          console.error('Erro ao registrar PorcoAtividade:', erro);
-          alert('Ocorreu um erro ao registrar a PorcoAtividade. Por favor, tente novamente!');
-        }
-      });
+ 
     }
   }
 }
