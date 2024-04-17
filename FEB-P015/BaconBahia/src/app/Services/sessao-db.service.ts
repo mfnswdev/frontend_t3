@@ -39,4 +39,9 @@ export class SessaoDBService {
   deleteSessaoByID(id: string) {
     return this.http.delete<DataSessao>(`https://baconba-project-default-rtdb.firebaseio.com/data/sessoes/${id}.json`);
   }
+
+  postPorcoAtividade(data: any) {
+    return this.http.post('https://baconba-project-default-rtdb.firebaseio.com/data/porcoAtividade.json', data);
+  }
+  
 }

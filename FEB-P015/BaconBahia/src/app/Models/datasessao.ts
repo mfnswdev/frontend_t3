@@ -6,5 +6,11 @@ export interface DataSessao {
     data: string,
     descricao: string,
     atividades: string[],
-    statusAtividades: statusAtividades
+}
+
+export interface PorcoAtividade {
+    sessaoId: string,
+    porcoId: string,
+    atividadeId: string,
+    status: boolean
 }
