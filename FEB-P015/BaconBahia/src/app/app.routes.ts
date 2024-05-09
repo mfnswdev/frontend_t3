@@ -11,6 +11,7 @@ import { AuthGuard } from './Guards/auth.guard';
 import { EditarPesoComponent } from './Pages/editar-peso/editar-peso.component';
 import { ListarSessoesComponent } from './Pages/listar-sessoes/listar-sessoes.component';
 import { CadastroSessaoComponent } from './Pages/cadastro-sessao/cadastro-sessao.component';
+import { DetalharSessaoComponent } from './Pages/detalhar-sessao/detalhar-sessao.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,8 +25,8 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'editarPeso/:id/:pesagemId',loadComponent: () => import('./Pages/editar-peso/editar-peso.component').then(m => m.EditarPesoComponent), canActivate: [AuthGuard]},
     { path: 'listarSessoes', component: ListarSessoesComponent },
-    { path: 'cadastrarSessao', component: CadastroSessaoComponent }
-
+    { path: 'cadastrarSessao', component: CadastroSessaoComponent },
+    { path: 'detalharSessao/:id', component: DetalharSessaoComponent}
 
 
     // {path: 'sem-autorizacao', component: SemAutorizacaoComponent},

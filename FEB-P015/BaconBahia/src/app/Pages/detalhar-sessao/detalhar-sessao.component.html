@@ -1,0 +1,26 @@
+  <h2>Listagem de Animais</h2>
+  
+  <ng-container *ngIf="loadedPorcos.length < 1; else loaded">
+    <div class="loader-container">
+      <h1>Nenhum item encontrado!</h1>
+    </div>
+  </ng-container>
+  
+  <ng-template #loaded>
+    <table class="tickets-table" *ngIf="loadedPorcos.length >=1">
+      <thead>
+        <tr>
+          <th>Brinco do Animal</th>
+          <th>Sexo</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let animal of loadedPorcos">
+          <td>{{ animal.porcoId }}</td>
+          <td>{{ animal.genero }}</td>
+          <td>{{ animal.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>

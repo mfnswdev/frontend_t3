@@ -22,6 +22,9 @@ export class SessaoDBService {
     }
     ));
   }  
+  getSessaoByID(id: string) {
+    return this.http.get<DataSessao>(`https://baconba-project-default-rtdb.firebaseio.com/data/sessoes/${id}.json`);
+  }
   postData(data: any) {
     return this.http.post<{name: string}>('https://baconba-project-default-rtdb.firebaseio.com/data/sessoes.json', data).pipe(
       map((responseData: {name: string}) => {
@@ -47,5 +50,6 @@ export class SessaoDBService {
   postPorcoAtividade(data: any) {
     return this.http.post('https://baconba-project-default-rtdb.firebaseio.com/data/porcoAtividade.json', data);
   }
+  
   
 }
