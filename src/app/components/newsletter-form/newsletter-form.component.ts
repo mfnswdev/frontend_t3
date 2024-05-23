@@ -29,6 +29,7 @@ export class NewsletterFormComponent {
         next: () => {
           this.newsletterFrom.reset();
           this.loading.set(false);
+          alert('Thank you for subscribing to our newsletter!');
         }
       });
     }

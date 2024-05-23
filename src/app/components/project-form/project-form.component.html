@@ -1,0 +1,70 @@
+<div class="form-container">
+    <div class="project-form">
+        <h2>Solicitação de projeto</h2>
+        <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+
+
+            <label for="name">Nome:</label>
+            <input id="name" formControlName="name">
+            <span *ngIf="!projectForm.get('name')?.valid && projectForm.get('name')?.touched">
+                Por favor, insira o seu nome!
+            </span>
+
+            <label for="phone">Telefone:</label>
+            <input mask="(00) 00000-0000" formControlName="phone" id="phone">
+            <span *ngIf="!projectForm.get('phone')?.valid && projectForm.get('phone')?.touched">
+                Por favor, insira o seu telefone!
+            </span>
+
+            <label for="email">Email:</label>
+            <input mask="email" formControlName="email" id="email">
+            <span *ngIf="!projectForm.get('email')?.valid && projectForm.get('email')?.touched">
+                Por favor, insira o seu email!
+            </span>
+
+            <label for="company">Empresa:</label>
+            <input id="company" formControlName="company">
+            <span *ngIf="!projectForm.get('company')?.valid && projectForm.get('company')?.touched">
+                Por favor, insira o nome da empresa!
+            </span>
+
+            <label for="type">Tipo do projeto:</label>
+            <select id="type" formControlName="type">
+                <option value="desktop">Desktop</option>
+                <option value="web">Web</option>
+                <option value="mobile">Mobile</option>
+                <option value="api">API</option>
+                <option value="outsourcing">Outsourcing</option>
+            </select>
+            <span *ngIf="!projectForm.get('type')?.valid && projectForm.get('type')?.touched">
+                Por favor, insira o tipo do projeto!
+            </span>
+
+
+            <label for="description">Descrição do projeto:</label>
+            <input id="description" formControlName="description">
+            <span *ngIf="!projectForm.get('description')?.valid && projectForm.get('description')?.touched">
+                Por favor, insira a descrição do projeto!
+            </span>
+
+            <label for="deadline">Data de entrega (expectativa):</label>
+            <input type="date" id="deadline" formControlName="deadline">
+            <span *ngIf="!projectForm.get('deadline')?.valid && projectForm.get('deadline')?.touched">
+                Por favor, insira a data de entrega!
+            </span>
+
+
+            <label for="budget">Orçamento disponivel:</label>
+            <select name="budget" id="budget" formControlName="budget">
+                <option value="lowProject">Entre R$ 2.00,00 e R$ 5.000,00</option>
+                <option value="mediumProject">Entre R$ 5.000,01 e R$ 10.000,00</option>
+                <option value="highProject">Acima de R$ 10.000,01</option>
+            </select>
+
+
+
+            <btn-primary btn-text="Enviar solicitação" variant="secondary" [disabled]="!projectForm.valid"></btn-primary>
+        </form>
+    </div>
+
+</div>
