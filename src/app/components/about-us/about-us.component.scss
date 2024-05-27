@@ -14,12 +14,12 @@ main {
 
     font-family: 'Roboto', sans-serif;
 
+    img {
+        border-radius: 20px;
+                
+    }
 
     span {
-        font-size: 20px;
-        font-weight: 700;
-        color: $secondary-text;
-
         font-size: 40px;
         font-weight: 700;
         // color: $secondary-text;
