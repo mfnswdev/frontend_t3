@@ -1,0 +1,43 @@
+@import "../../../color-variables.scss";
+
+.mobile,
+.web,
+.cloud,
+.database,
+.api {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.cloud {
+    margin-bottom: 15rem;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    justify-content: center;
+    width: 35rem;
+
+    font-weight: 600;
+    color: $secondary-color;
+    border-bottom: 10px solid $secondary-color;
+    padding-bottom: 5px;
+    // margin-bottom: 2rem;
+}
+
+.mobile-container,
+.web-container,
+.cloud-container,
+.db-container,
+.api-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}

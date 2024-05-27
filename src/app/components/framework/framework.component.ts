@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './framework.component.scss'
 })
 export class FrameworkComponent {
-@Input("titulo") cardTitle: string = "Título";
-@Input("descricao") cardDescription: string = "Descrição";
-@Input("imagem") imgPath: string = "https://via.placeholder.com/150";
+  @Input("titulo") cardTitle: string = "Título";
+  @Input("descricao") cardDescription: string = "";
+  @Input("imagem") imgPath: string = "https://via.placeholder.com/150";
 }

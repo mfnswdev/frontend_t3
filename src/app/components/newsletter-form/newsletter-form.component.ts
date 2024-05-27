@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, Input, input, signal } from '@angular/core';
 import { BtnPrimaryComponent } from '../btn-primary/btn-primary.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NewsletterService } from '../../services/newsletter.service';
@@ -14,6 +14,8 @@ import { NewsletterService } from '../../services/newsletter.service';
 export class NewsletterFormComponent {
   newsletterFrom!: FormGroup;
   loading = signal(false);
+  @Input("texto") text: string = "";
+  @Input("paragrafo") paragrafo: string = "";
 
   constructor(private service: NewsletterService) {
     this.newsletterFrom = new FormGroup({
