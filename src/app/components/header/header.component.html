@@ -1,15 +1,18 @@
 <header class="app-header">
     <div class="nav">
-        
-            <nav class="nav-links">
-                <a routerLink="/home" routerLinkActive="active">Home</a>
-                <a routerLink="/cadastrarAnimal" routerLinkActive="active">Cadastrar</a>
-                <a routerLink="/listarAnimais" routerLinkActive="active">Listar</a>
-                <a routerLink="/listarSessoes" routerLinkActive="active">Sessões</a>
-                <a routerLink="/login" routerLinkActive="active">Login</a>
-                <!-- <a *ngIf="estaAutenticado" (click)="logout()">Logout</a> -->
-            </nav>
+        <div class="image-container">
+            <img ngSrc="./assets/logo-header-transparent.png" width="60" height="70">
+        </div>
+
+        <nav class="nav-links">
+            <a routerLink="/" routerLinkActive="active">Home</a>
+            <!-- <a routerLink="/contact" routerLinkActive="active">Quero um projo</a> -->
+            <a routerLink="/about-us" routerLinkActive="active">Sobre nós</a>
+            <a routerLink="/skill-set" routerLinkActive="active">Skills</a>
+            <a routerLink="/join-us" routerLinkActive="active">Faça parte</a>
+            <a routerLink="/login" routerLinkActive="active">Login</a>
+            <a *ngIf="estaAutenticado" (click)="logout()">Logout</a>
+        </nav>
     </div>
-    <img ngSrc="./assets/logo-header.png" width="250" height="320">
-    
+
 </header>
