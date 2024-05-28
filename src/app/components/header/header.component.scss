@@ -1,5 +1,28 @@
+@import "../../../color-variables.scss";
+
 .app-header{
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.header .nav-links {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+ .nav a {
+    text-decoration: none;
+    // color: #495057;
+    color: $primary-color;
+    transition: color 0.3s ease;
+  
+  }
+  
+  .nav-links a:hover {
+    color: $secondary-color;
+  }
+  
+  a {
+    cursor: pointer;
+  }
