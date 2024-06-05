@@ -76,27 +76,27 @@ export class CadastroSessaoComponent implements OnInit {
       })
   }
 
-  criarPorcoAtividades(sessao: DataSessao): PorcoAtividade[] {
-    const porcoAtividades: PorcoAtividade[] = [];
+//   criarPorcoAtividades(sessao: DataSessao): PorcoAtividade[] {
+//     const porcoAtividades: PorcoAtividade[] = [];
 
-    // Iterar sobre cada porcoId na sessao
-    for (const porcoId of sessao.porcoId) {
-        // Iterar sobre cada atividade na sessao
-        for (const atividadeId of sessao.atividades) {
-            // Criar instância de PorcoAtividade com os dados da sessao e status false
-            const porcoAtividade: PorcoAtividade = {
-                sessaoId: this.idSessao, // Se não houver id na sessão, use uma string vazia
-                porcoId: porcoId,
-                atividadeId: atividadeId,
-                status: false
-            };
-            // Adicionar PorcoAtividade ao array
-            porcoAtividades.push(porcoAtividade);
-        }
-    }
+//     // Iterar sobre cada porcoId na sessao
+//     for (const porcoId of sessao.porcoId) {
+//         // Iterar sobre cada atividade na sessao
+//         for (const atividadeId of sessao.atividades) {
+//             // Criar instância de PorcoAtividade com os dados da sessao e status false
+//             const porcoAtividade: PorcoAtividade = {
+//                 sessaoId: this.idSessao, // Se não houver id na sessão, use uma string vazia
+//                 porcoId: porcoId,
+//                 atividadeId: atividadeId,
+//                 status: false
+//             };
+//             // Adicionar PorcoAtividade ao array
+//             porcoAtividades.push(porcoAtividade);
+//         }
+//     }
 
-    return porcoAtividades;
-}
+//     return porcoAtividades;
+// }
 
   onSubmit() {
     console.log(this.formSessaoCreate.value);
@@ -111,18 +111,18 @@ export class CadastroSessaoComponent implements OnInit {
           console.log('Sessão registrada com sucesso!', idSessao);
           alert('Sessão registrada com sucesso!');
 
-          var atividades: PorcoAtividade[] = this.criarPorcoAtividades(this.formSessaoCreate.value);
-          this.database.postPorcoAtividade(atividades).subscribe({
-            next: () => {
-              console.log('PorcoAtividade registrada com sucesso!');
-              alert('PorcoAtividade registrada com sucesso!');
-              this.router.navigate(['listarSessoes']);
-            },
-            error: (erro) => {
-              console.error('Erro ao registrar PorcoAtividade:', erro);
-              alert('Ocorreu um erro ao registrar a PorcoAtividade. Por favor, tente novamente!');
-            }
-          });
+          // var atividades: PorcoAtividade[] = this.criarPorcoAtividades(this.formSessaoCreate.value);
+          // this.database.postPorcoAtividade(atividades).subscribe({
+          //   next: () => {
+          //     console.log('PorcoAtividade registrada com sucesso!');
+          //     alert('PorcoAtividade registrada com sucesso!');
+          //     this.router.navigate(['listarSessoes']);
+          //   },
+          //   error: (erro) => {
+          //     console.error('Erro ao registrar PorcoAtividade:', erro);
+          //     alert('Ocorreu um erro ao registrar a PorcoAtividade. Por favor, tente novamente!');
+          //   }
+          // });
         },
         error: (erro) => {
           console.error('Erro ao registrar sessão:', erro);

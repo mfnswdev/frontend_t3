@@ -4,6 +4,7 @@ import { DataSessao } from '../../Models/datasessao';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatabaseService } from '../../Services/database.service';
 import { CommonModule } from '@angular/common';
+import { dataSessaoDetails } from '../../Models/dataSessaoDetail';
 
 @Component({
   selector: 'app-detalhar-sessao',
@@ -13,19 +14,25 @@ import { CommonModule } from '@angular/common';
   styleUrl: './detalhar-sessao.component.scss'
 })
 export class DetalharSessaoComponent implements OnInit{
-  loadedSessao: DataSessao = {} as DataSessao;
+  loadedSessao: DataSessao = {
+    id: '',
+    porcoId: [],
+    data: '',
+    descricao: '',
+    atividades: [],
+  };
   loadedPorcos: any[] = [];
   id: any;
+
+ 
+
   constructor(private databaseSessao: SessaoDBService, private route: ActivatedRoute, private router: Router, private databasePorco: DatabaseService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
-
     this.fetchSessao();
-
-
   }
 
   
@@ -34,29 +41,13 @@ export class DetalharSessaoComponent implements OnInit{
       .subscribe({
         next: (data: DataSessao) => {
           this.loadedSessao = data;
+          console.log(this.loadedSessao);
+          console.log(this.loadedSessao.porcoId);
         },
         error: (erro) => {
           console.error('Ocorreu um erro ao buscar os suínos:', erro);
         }
       })
-
-      this.loadedSessao.porcoId.forEach((item) => {
-        // Se item é um objeto, pegue o campo porcoId
-        const porcoId = item; // Certifique-se de pegar o valor correto
-        console.log(item); // Deve mostrar '3123'
-        
-        // Agora use o porcoId para buscar os dados no banco de dados
-        this.databasePorco.getAnimalByID(porcoId)
-          .subscribe({
-            next: (data) => {
-              this.loadedPorcos.push(data);
-            },
-            error: (erro) => {
-              console.error('Ocorreu um erro ao buscar os suínos:', erro);
-            }
-          });
-    });
-    
 
   }
 }

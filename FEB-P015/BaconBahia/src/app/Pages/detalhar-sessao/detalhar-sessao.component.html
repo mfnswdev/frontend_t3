@@ -1,26 +1,36 @@
-  <h2>Listagem de Animais</h2>
-  
-  <ng-container *ngIf="loadedPorcos.length < 1; else loaded">
-    <div class="loader-container">
-      <h1>Nenhum item encontrado!</h1>
-    </div>
-  </ng-container>
-  
-  <ng-template #loaded>
-    <table class="tickets-table" *ngIf="loadedPorcos.length >=1">
-      <thead>
-        <tr>
-          <th>Brinco do Animal</th>
-          <th>Sexo</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let animal of loadedPorcos">
-          <td>{{ animal.porcoId }}</td>
-          <td>{{ animal.genero }}</td>
-          <td>{{ animal.status }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </ng-template>
+<h2>Detalhes da Sessão</h2>
+
+<ng-container *ngIf="loadedSessao.porcoId.length < 1; else loaded">
+  <div class="loader-container">
+    <h1>Nenhum item encontrado!</h1>
+  </div>
+</ng-container>
+
+<ng-template #loaded>
+  <table class="tickets-table" *ngIf="loadedSessao.porcoId.length >=1">
+    <thead>
+      <tr>
+        <th>Data da Sessão</th>
+        <th>Descrição</th>
+        <th>Atividades de Manejo</th>
+        <th>Brinco do Animal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ loadedSessao.data }}</td>
+        <td>{{ loadedSessao.descricao }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let atividade of loadedSessao.atividades">{{ atividade.atv_text }}</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li *ngFor="let porco of loadedSessao.porcoId">{{ porco.porcoId }}</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>
