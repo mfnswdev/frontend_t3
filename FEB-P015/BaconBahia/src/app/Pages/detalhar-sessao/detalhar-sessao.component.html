@@ -1,4 +1,6 @@
 <h2>Detalhes da Sessão</h2>
+<button type="button" class="btnVoltar" routerLink="/listarSessoes">
+  Voltar</button>
 
 <ng-container *ngIf="loadedSessao.porcoId.length < 1; else loaded">
   <div class="loader-container">

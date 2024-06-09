@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessaoDBService } from '../../Services/sessao-db.service';
 import { DataSessao } from '../../Models/datasessao';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DatabaseService } from '../../Services/database.service';
 import { CommonModule } from '@angular/common';
 import { dataSessaoDetails } from '../../Models/dataSessaoDetail';
@@ -9,7 +9,7 @@ import { dataSessaoDetails } from '../../Models/dataSessaoDetail';
 @Component({
   selector: 'app-detalhar-sessao',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './detalhar-sessao.component.html',
   styleUrl: './detalhar-sessao.component.scss'
 })
