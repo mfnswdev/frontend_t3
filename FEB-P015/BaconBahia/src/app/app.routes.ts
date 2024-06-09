@@ -24,9 +24,9 @@ export const routes: Routes = [
     { path: 'grafico/:id', loadComponent: () => import('./Pages/grafico/grafico.component').then(m => m.GraficoComponent), canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent },
     { path: 'editarPeso/:id/:pesagemId',loadComponent: () => import('./Pages/editar-peso/editar-peso.component').then(m => m.EditarPesoComponent), canActivate: [AuthGuard]},
-    { path: 'listarSessoes', component: ListarSessoesComponent },
-    { path: 'cadastrarSessao', component: CadastroSessaoComponent },
-    { path: 'detalharSessao/:id', component: DetalharSessaoComponent}
+    { path: 'listarSessoes', component: ListarSessoesComponent, canActivate: [AuthGuard]},
+    { path: 'cadastrarSessao', component: CadastroSessaoComponent, canActivate: [AuthGuard]},
+    { path: 'detalharSessao/:id', component: DetalharSessaoComponent, canActivate: [AuthGuard]},
 
 
     // {path: 'sem-autorizacao', component: SemAutorizacaoComponent},
